@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const movieLink = document.createElement('a');
             movieLink.href = `movie.html?movie=${movie.id}`;
-            movieLink.classList.add('movie-link');
+            movieLink.classList.add("'movie-link'");
 
             const movieImage = document.createElement('img');
             movieImage.src = movie.image;
