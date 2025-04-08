@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Watch Movie</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="photos/website_logo2.png" alt="Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+            <div class="profile-icon">
+                <a href="signup.html" class="signup-icon">
+                    <img src="photos/signup_logo.png" alt="Signup Icon">
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="movie-player-section">
+            <div class="container">
+                <div class="movie-player-container">
+                    <video class="movie-player" controls id="movie-player">
+                        <!-- The video source will be set by JavaScript -->
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <ul class="footer-links">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const movieId = urlParams.get('movie');
+            const moviePlayer = document.getElementById('movie-player');
+
+            // Define movie sources (for demonstration purposes)
+            const movieSources = {
+
+
+
+
+
+                1: 'video/Toofan.mp4',
+                2: 'video/Toofan.mp4',
+                3: 'video/Toofan.mp4',
+                4: 'video/Toofan.mp4',
+                5: 'video/Toofan.mp4',
+                6: 'video/Toofan.mp4',
+                
+
+
+
+
+            };
+
+            // Set the movie source based on the movieId
+            if (movieSources[movieId]) {
+                moviePlayer.src = movieSources[movieId];
+            } else {
+                moviePlayer.textContent = 'Movie not found.';
+            }
+        });
+    </script>
+</body>
+</html>
