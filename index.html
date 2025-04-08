@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Movie Streaming</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="photos/website_logo2.png" alt="Logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button">
+                    <div class="search-icon"></div>
+                </button>
+            </div>
+            <div class="profile-icon">
+                <a href="signup.html" class="signup-icon">
+                    <img src="photos/signup_logo.png" alt="Signup Icon">
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="movies-section">
+
+            <h2>Movies</h2>
+
+            <div class="movies-grid" id="movies-grid">
+                <!-- Movie items will be dynamically added here -->
+            </div>
+
+            <div class="pagination">
+                <button id="prev-button">Previous</button>
+                <button id="next-button">Next</button>
+            </div>
+
+        </section>
+
+    </main>
+    <footer>
+        <ul class="footer-links">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
