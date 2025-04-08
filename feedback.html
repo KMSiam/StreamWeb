@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Feedback</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="photos/website_logo2.png" alt="Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button">
+                    <div class="search-icon"></div>
+                </button>
+            </div>
+            <div class="profile-icon">
+                <a href="signup.html" class="signup-icon">
+                    <img src="photos/signup_logo.png" alt="Signup Icon">
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="feedback-section">
+            <div class="feedback-form-container">
+                <h2>Feedback</h2>
+                <form class="feedback-form">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="feedback">Your Feedback</label>
+                    <textarea id="feedback" name="feedback" rows="5" required></textarea>
+                    
+                    <button type="submit">Submit Feedback</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <ul class="footer-links">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
