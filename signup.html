@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sign Up</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="photos/website_logo2.png" alt="Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button">
+                    <div class="search-icon"></div>
+                </button>
+            </div>
+            <div class="profile-icon">
+                <a href="signup.html" class="signup-icon">
+                    <img src="photos/signup_logo.png" alt="Signup Icon">
+                </a>
+            </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="signup-section">
+            <div class="signup-form-container">
+                <h2>Create Your Account</h2>
+                <form action="submit_signup.html" method="post" class="signup-form">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <ul class="footer-links">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
