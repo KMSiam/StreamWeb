@@ -343,24 +343,39 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 80px); /* Adjust based on header and footer height */
-    background-color: #1e1e1e;
-    padding: 20px;
+    min-height: calc(100vh - 160px);
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    padding: 40px 20px;
 }
 
 .contact-form-container, .feedback-form-container {
-    background-color: #2c2c2c;
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 400px;
+    background: rgba(28, 28, 28, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 500px;
     width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(30, 144, 255, 0.2);
 }
 
-.contact-form-container h2, .feedback-form-container h2 {
-    margin: 0 0 20px;
-    color: #1e90ff;
+.contact-header, .feedback-header {
     text-align: center;
+    margin-bottom: 30px;
+}
+
+.contact-header h2, .feedback-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #1e90ff, #00bfff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.contact-header p, .feedback-header p {
+    color: #aaa;
+    margin: 0;
 }
 
 .contact-form, .feedback-form {
@@ -368,33 +383,64 @@ nav {
     flex-direction: column;
 }
 
+.contact-form .form-group, .feedback-form .form-group {
+    margin-bottom: 20px;
+}
+
 .contact-form label, .feedback-form label {
-    font-size: 14px;
-    margin-bottom: 5px;
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-weight: 500;
 }
 
 .contact-form input, .feedback-form input, .contact-form textarea, .feedback-form textarea {
-    padding: 10px;
-    border: 1px solid #444;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    background-color: #333;
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
     color: #fff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: inherit;
 }
 
-.contact-form button, .feedback-form button {
-    background-color: #1e90ff;
+.contact-form input:focus, .feedback-form input:focus, .contact-form textarea:focus, .feedback-form textarea:focus {
+    outline: none;
+    border-color: #1e90ff;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px rgba(30, 144, 255, 0.3);
+}
+
+.contact-form input::placeholder, .feedback-form input::placeholder, .contact-form textarea::placeholder, .feedback-form textarea::placeholder {
+    color: #aaa;
+}
+
+.contact-btn, .feedback-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #1e90ff, #00bfff);
     border: none;
-    padding: 10px;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
+    border-radius: 25px;
+    color: white;
     font-size: 16px;
-    transition: background-color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.contact-form button:hover, .feedback-form button:hover {
-    background-color: #1c7ed6;
+.contact-btn:hover, .feedback-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 144, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+    .contact-form-container, .feedback-form-container {
+        padding: 30px 20px;
+        margin: 20px;
+    }
 }
 
 /* Footer styles */
