@@ -14,33 +14,102 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#movies">Movies</a></li>
+                <li><a href="index.html#trending">Trending</a></li>
+                <li><a href="index.html#genres">Genres</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="feedback.html">Feedback</a></li>
             </ul>
-            <div class="profile-icon">
-                <a href="signup.html" class="signup-icon">
-                    <img src="photos/signup_logo.png" alt="Signup Icon">
-                </a>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button">
+                    <div class="search-icon"></div>
+                </button>
+            </div>
+            <div class="auth-buttons">
+                <a href="signin.html" class="auth-btn signin-btn">Sign In</a>
+                <a href="signup.html" class="auth-btn signup-btn">Sign Up</a>
             </div>
         </nav>
     </header>
     <main>
         <section class="movie-player-section">
             <div class="container">
+                <div class="movie-info-header" id="movie-info">
+                    <h1 id="movie-title">Loading...</h1>
+                    <div class="movie-meta">
+                        <span class="movie-rating" id="movie-rating">⭐ 8.5</span>
+                        <span class="movie-year" id="movie-year">2024</span>
+                        <span class="movie-duration" id="movie-duration">2h 15m</span>
+                        <span class="genre-tag" id="movie-genre">ACTION</span>
+                    </div>
+                    <p id="movie-description">An epic action thriller that will keep you on the edge of your seat.</p>
+                </div>
+                
                 <div class="movie-player-container">
                     <video class="movie-player" controls id="movie-player">
                         <!-- The video source will be set by JavaScript -->
                         Your browser does not support the video tag.
                     </video>
                 </div>
+                
+                <div class="movie-actions">
+                    <button class="action-btn primary" onclick="toggleWatchlist()">
+                        <span id="watchlist-icon">❤️</span> Add to Watchlist
+                    </button>
+                    <button class="action-btn" onclick="shareMovie()">
+                        🔗 Share
+                    </button>
+                    <button class="action-btn" onclick="window.history.back()">
+                        ← Back to Browse
+                    </button>
+                </div>
             </div>
         </section>
     </main>
     <footer>
-        <ul class="footer-links">
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-        </ul>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="photos/website_logo2.png" alt="StreamWeb">
+                    <h3>StreamWeb</h3>
+                </div>
+                <p>Your ultimate streaming destination for movies and TV shows.</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <a href="index.html#movies">Movies</a>
+                    <a href="index.html#trending">Trending</a>
+                    <a href="index.html#genres">Genres</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="contact.html">Contact</a>
+                    <a href="feedback.html">Feedback</a>
+                    <a href="#">Help Center</a>
+                </div>
+            </div>
+            
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#">📘</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📷</a>
+                    <a href="#">📺</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 StreamWeb. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -49,31 +118,83 @@
             const moviePlayer = document.getElementById('movie-player');
 
             // Define movie sources (for demonstration purposes)
-            const movieSources = {
-
-
-
-
-
-                1: 'video/TOOFAN _ Official Tease.mp4',
-                2: 'video/TOOFAN _ Official Tease.mp4',
-                3: 'video/TOOFAN _ Official Tease.mp4',
-                4: 'video/TOOFAN _ Official Tease.mp4',
-                5: 'video/TOOFAN _ Official Tease.mp4',
-                6: 'video/TOOFAN _ Official Tease.mp4',
-                
-
-
-
-
+            const movieData = {
+                1: { title: "Toofan", rating: 8.5, year: "2024", duration: "2h 15m", genre: "action", description: "An epic action thriller", video: 'video/TOOFAN _ Official Tease.mp4' },
+                2: { title: "Midnight Express", rating: 7.8, year: "2024", duration: "1h 58m", genre: "action", description: "High-speed chase thriller", video: 'video/TOOFAN _ Official Tease.mp4' },
+                3: { title: "Eternal Love", rating: 8.2, year: "2024", duration: "2h 5m", genre: "romance", description: "A timeless love story", video: 'video/TOOFAN _ Official Tease.mp4' },
+                4: { title: "Laugh Out Loud", rating: 7.5, year: "2023", duration: "1h 42m", genre: "comedy", description: "Comedy at its finest", video: 'video/TOOFAN _ Official Tease.mp4' },
+                5: { title: "Dark Secrets", rating: 8.9, year: "2024", duration: "2h 8m", genre: "thriller", description: "Psychological thriller", video: 'video/TOOFAN _ Official Tease.mp4' },
+                6: { title: "The Haunting", rating: 7.2, year: "2023", duration: "1h 35m", genre: "horror", description: "Spine-chilling horror", video: 'video/TOOFAN _ Official Tease.mp4' },
+                7: { title: "Family Bonds", rating: 8.7, year: "2024", duration: "2h 22m", genre: "drama", description: "Emotional family drama", video: 'video/TOOFAN _ Official Tease.mp4' },
+                8: { title: "Space Odyssey", rating: 9.1, year: "2024", duration: "2h 45m", genre: "action", description: "Epic space adventure", video: 'video/TOOFAN _ Official Tease.mp4' }
             };
 
-            // Set the movie source based on the movieId
-            if (movieSources[movieId]) {
-                moviePlayer.src = movieSources[movieId];
+            // Set the movie data based on the movieId
+            if (movieData[movieId]) {
+                const movie = movieData[movieId];
+                
+                // Set video source with error handling
+                moviePlayer.src = movie.video;
+                moviePlayer.load();
+                
+                // Add error handling for video
+                moviePlayer.addEventListener('error', function() {
+                    moviePlayer.innerHTML = `
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #1c1c1c; color: #fff; text-align: center; padding: 20px;">
+                            <div>
+                                <h3>Video not available</h3>
+                                <p>Please check if the video file exists at: ${movie.video}</p>
+                                <button onclick="location.reload()" style="padding: 10px 20px; background: #1e90ff; color: white; border: none; border-radius: 5px; cursor: pointer;">Retry</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                // Add loading indicator
+                moviePlayer.addEventListener('loadstart', function() {
+                    console.log('Video loading started...');
+                });
+                
+                moviePlayer.addEventListener('canplay', function() {
+                    console.log('Video can start playing');
+                });
+                
+                // Update movie info
+                document.getElementById('movie-title').textContent = movie.title;
+                document.getElementById('movie-rating').textContent = `⭐ ${movie.rating}`;
+                document.getElementById('movie-year').textContent = movie.year;
+                document.getElementById('movie-duration').textContent = movie.duration;
+                document.getElementById('movie-genre').textContent = movie.genre.toUpperCase();
+                document.getElementById('movie-description').textContent = movie.description;
             } else {
-                moviePlayer.textContent = 'Movie not found.';
+                document.getElementById('movie-title').textContent = 'Movie not found';
+                moviePlayer.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #1c1c1c; color: #fff;">Movie not found.</div>';
             }
+        });
+        
+        function toggleWatchlist() {
+            const icon = document.getElementById('watchlist-icon');
+            const btn = event.target;
+            if (icon.textContent === '❤️') {
+                icon.textContent = '🤍';
+                btn.innerHTML = btn.innerHTML.replace('Add to', 'Remove from');
+            } else {
+                icon.textContent = '❤️';
+                btn.innerHTML = btn.innerHTML.replace('Remove from', 'Add to');
+            }
+        }
+        
+        function shareMovie() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.getElementById('movie-title').textContent,
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Movie link copied to clipboard!');
+            }
+        }
         });
     </script>
 </body>

@@ -14,6 +14,10 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#movies">Movies</a></li>
+                <li><a href="index.html#trending">Trending</a></li>
+                <li><a href="index.html#genres">Genres</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="search-container">
                 <input type="text" id="search-input" placeholder="Search...">
@@ -21,38 +25,133 @@
                     <div class="search-icon"></div>
                 </button>
             </div>
-            <div class="profile-icon">
-                <a href="signup.html" class="signup-icon">
-                    <img src="photos/signup_logo.png" alt="Signup Icon">
-                </a>
-            </div>
+            <div class="auth-buttons">
+                <a href="signin.html" class="auth-btn signin-btn">Sign In</a>
+                <a href="signup.html" class="auth-btn signup-btn active">Sign Up</a>
             </div>
         </nav>
     </header>
     <main>
         <section class="signup-section">
             <div class="signup-form-container">
-                <h2>Create Your Account</h2>
-                <form action="submit_signup.html" method="post" class="signup-form">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                <div class="signup-header">
+                    <h2>🎉 Join StreamWeb</h2>
+                    <p>Start your unlimited streaming journey today!</p>
+                    <div class="signup-benefits">
+                        <div class="benefit">
+                            <span>🎬</span>
+                            <span>10K+ Movies</span>
+                        </div>
+                        <div class="benefit">
+                            <span>📺</span>
+                            <span>4K Quality</span>
+                        </div>
+                        <div class="benefit">
+                            <span>✨</span>
+                            <span>No Ads</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="signup-form" onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label for="username">👤 Username</label>
+                        <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                    </div>
                     
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <div class="form-group">
+                        <label for="email">📧 Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
                     
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <div class="form-group">
+                        <label for="password">🔒 Password</label>
+                        <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+                    </div>
                     
-                    <button type="submit">Sign Up</button>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="signup-btn">
+                        🚀 Start Free Trial
+                    </button>
+                    
+                    <div class="login-link">
+                        Already have an account? <a href="signin.html">Sign In</a>
+                    </div>
                 </form>
             </div>
         </section>
     </main>
     <footer>
-        <ul class="footer-links">
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-        </ul>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="photos/website_logo2.png" alt="StreamWeb">
+                    <h3>StreamWeb</h3>
+                </div>
+                <p>Your ultimate streaming destination for movies and TV shows.</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <a href="index.html#movies">Movies</a>
+                    <a href="index.html#trending">Trending</a>
+                    <a href="index.html#genres">Genres</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="contact.html">Contact</a>
+                    <a href="feedback.html">Feedback</a>
+                    <a href="#">Help Center</a>
+                </div>
+            </div>
+            
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#">📘</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📷</a>
+                    <a href="#">📺</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 StreamWeb. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
     </footer>
+    
+    <script>
+        function handleSignup(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            
+            // Show success message
+            const container = document.querySelector('.signup-form-container');
+            container.innerHTML = `
+                <div class="success-message">
+                    <div class="success-icon">✓</div>
+                    <h2>Welcome to StreamWeb!</h2>
+                    <p>Your account has been created successfully.</p>
+                    <button onclick="window.location.href='index.html'" class="btn-primary">
+                        🏠 Go to Home
+                    </button>
+                </div>
+            `;
+        }
+    </script>
 </body>
 </html>

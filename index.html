@@ -16,24 +16,102 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="#movies">Movies</a></li>
+                <li><a href="#trending">Trending</a></li>
+                <li><a href="#genres">Genres</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="search-container">
-                <input type="text" id="search-input" placeholder="Search...">
-                <button id="search-button">
-                    <div class="search-icon"></div>
+                <input type="text" id="search-input" placeholder="Search movies...">
+                <button id="search-button" type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 21L16.514 16.506M19 10.5C19 15.194 15.194 19 10.5 19S2 15.194 2 10.5 5.806 2 10.5 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </button>
+                <div class="search-results" id="search-results"></div>
             </div>
-            <div class="profile-icon">
-                <a href="signup.html" class="signup-icon">
-                    <img src="photos/signup_logo.png" alt="Signup Icon">
-                </a>
+            <div class="auth-buttons">
+                <a href="signin.html" class="auth-btn signin-btn">Sign In</a>
+                <a href="signup.html" class="auth-btn signup-btn">Sign Up</a>
             </div>
         </nav>
     </header>
     <main>
-        <section class="movies-section">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-badge">✨ Now Streaming</div>
+                <h1>StreamWeb</h1>
+                <p>Discover thousands of movies and TV shows. Stream in 4K quality with no ads. Start your cinematic journey today.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">10K+</span>
+                        <span class="stat-label">Movies</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4K</span>
+                        <span class="stat-label">Quality</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Ads</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="document.getElementById('movies').scrollIntoView()">🎬 Start Watching</button>
+                    <button class="btn-secondary" onclick="window.location.href='signup.html'">📱 Free Trial</button>
+                </div>
+            </div>
+            <div class="hero-video">
+                <video autoplay muted loop>
+                    <source src="video/TOOFAN _ Official Tease.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
 
-            <h2>Movies</h2>
+        <!-- Trending Section -->
+        <section class="trending-section" id="trending">
+            <h2>🔥 Trending Now</h2>
+            <div class="trending-slider" id="trending-slider">
+                <!-- Trending items will be added here -->
+            </div>
+        </section>
+
+        <!-- Genre Categories -->
+        <section class="genres-section" id="genres">
+            <h2>Browse by Genre</h2>
+            <div class="genre-grid">
+                <div class="genre-card" data-genre="action">
+                    <span>Action</span>
+                </div>
+                <div class="genre-card" data-genre="drama">
+                    <span>Drama</span>
+                </div>
+                <div class="genre-card" data-genre="comedy">
+                    <span>Comedy</span>
+                </div>
+                <div class="genre-card" data-genre="thriller">
+                    <span>Thriller</span>
+                </div>
+                <div class="genre-card" data-genre="romance">
+                    <span>Romance</span>
+                </div>
+                <div class="genre-card" data-genre="horror">
+                    <span>Horror</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Movies Section -->
+        <section class="movies-section" id="movies">
+            <div class="section-header">
+                <h2>Latest Movies</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="new">New Releases</button>
+                    <button class="filter-btn" data-filter="popular">Popular</button>
+                </div>
+            </div>
 
             <div class="movies-grid" id="movies-grid">
                 <!-- Movie items will be dynamically added here -->
@@ -43,16 +121,62 @@
                 <button id="prev-button">Previous</button>
                 <button id="next-button">Next</button>
             </div>
-
         </section>
 
+        <!-- Continue Watching Section -->
+        <section class="continue-watching" id="continue">
+            <h2>Continue Watching</h2>
+            <div class="continue-grid" id="continue-grid">
+                <!-- Continue watching items will be added here -->
+            </div>
+        </section>
     </main>
     <footer>
-        <ul class="footer-links">
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-        </ul>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="photos/website_logo2.png" alt="StreamWeb">
+                    <h3>StreamWeb</h3>
+                </div>
+                <p>Your ultimate streaming destination for movies and TV shows.</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <a href="#movies">Movies</a>
+                    <a href="#trending">Trending</a>
+                    <a href="#genres">Genres</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="contact.html">Contact</a>
+                    <a href="feedback.html">Feedback</a>
+                    <a href="#">Help Center</a>
+                </div>
+            </div>
+            
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#">📘</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📷</a>
+                    <a href="#">📺</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 StreamWeb. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
