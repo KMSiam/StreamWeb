@@ -3029,3 +3029,29 @@ nav {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(30, 144, 255, 0.4);
 }
+/* Textarea styling for contact form */
+.signin-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.signin-form textarea:focus {
+    outline: none;
+    border-color: #1e90ff;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px rgba(30, 144, 255, 0.3);
+}
+
+.signin-form textarea::placeholder {
+    color: #aaa;
+}
