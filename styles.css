@@ -2756,7 +2756,9 @@ nav {
 
 .auth-buttons {
     display: flex;
-    gap: 12px;
+    gap: 10px;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .auth-btn {
@@ -2764,6 +2766,10 @@ nav {
     border-radius: 25px;
     text-decoration: none;
     font-size: 14px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 600;
     transition: all 0.3s ease;
     border: 2px solid transparent;
