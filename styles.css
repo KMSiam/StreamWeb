@@ -2844,23 +2844,43 @@ nav {
 
 /* Mobile Header */
 @media (max-width: 768px) {
+    header {
+        padding: 8px 15px;
+    }
+    
     nav {
         flex-direction: column;
-        gap: 15px;
+        gap: 8px;
     }
     
     .nav-links {
-        gap: 15px;
+        gap: 8px;
         flex-wrap: wrap;
         justify-content: center;
     }
     
+    .nav-links li a {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    .search-container {
+        padding: 5px 10px;
+    }
+    
     .search-container input {
-        width: 150px;
+        width: 120px;
+        font-size: 13px;
+        padding: 6px 8px;
     }
     
     .auth-buttons {
-        gap: 10px;
+        gap: 8px;
+    }
+    
+    .auth-btn {
+        padding: 6px 14px;
+        font-size: 12px;
     }
 }
 /* Enhanced Search Styling */
