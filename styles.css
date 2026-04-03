@@ -183,6 +183,76 @@ button {
     box-shadow: var(--shadow-glow);
 }
 
+/* User Profile Summary (Sidebar) */
+.user-profile-summary {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: var(--glass-bg-light);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 5px;
+    transition: var(--transition-base);
+}
+
+.user-profile-summary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--glass-border-hover);
+}
+
+.user-avatar {
+    width: 42px;
+    height: 42px;
+    background: var(--accent-mint-soft);
+    color: var(--accent-mint);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid var(--accent-mint-glow);
+}
+
+.user-avatar i {
+    width: 20px;
+    height: 20px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.logout-link {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-dim);
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition-base);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+}
+
+.logout-link:hover {
+    color: var(--accent-red, #ff4757);
+}
+
 .sidebar-footer { padding: 25px 30px; border-top: 1px solid var(--glass-border); }
 .social-icons { display: flex; justify-content: space-between; }
 .social-icons a { color: var(--text-dim); transition: var(--transition-base); }
@@ -1322,6 +1392,52 @@ footer::before {
 
 .form-group input::placeholder,
 .form-group textarea::placeholder { color: var(--text-muted); }
+
+/* Password Show/Hide Styling - Premium Redesign */
+.password-input-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-wrapper input {
+    padding-right: 55px !important; /* Extra room for a clean look */
+}
+
+.password-toggle {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.3); /* Integrated neutral state */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+}
+
+.password-toggle:hover {
+    color: var(--accent-mint);
+    background: rgba(32, 212, 114, 0.1); /* Subtle mint glow */
+    transform: translateY(-50%) scale(1.1);
+}
+
+.password-toggle:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.password-toggle i {
+    width: 18px;
+    height: 18px;
+    pointer-events: none; /* Icon inside button shouldn't intercept */
+}
 
 .form-options {
     display: flex;

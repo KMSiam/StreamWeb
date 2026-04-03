@@ -7,6 +7,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Supabase SDK & Config -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="auth.js"></script>
     <link rel="stylesheet" href="styles.css">
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -180,39 +184,70 @@
                 8: { title: "Space Odyssey", image: "photos/Toofan.jpg", rating: 9.1, year: "2024", duration: "2h 45m", genre: "action", description: "Epic space adventure", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' }
             };
 
-            function saveProgress() {
+            async function saveProgress() {
                 if (!moviePlayer.duration || moviePlayer.duration === 0) return;
                 
-                const progressData = JSON.parse(localStorage.getItem('streamweb_progress') || '{}');
                 const progress = Math.floor((moviePlayer.currentTime / moviePlayer.duration) * 100);
-                
-                // Update or create entry
-                progressData[movieId] = {
-                    id: movieId,
-                    title: movieData[movieId].title,
-                    image: movieData[movieId].image,
-                    progress: progress,
-                    currentTime: moviePlayer.currentTime,
-                    duration: moviePlayer.duration,
-                    durationText: movieData[movieId].duration,
-                    timestamp: Date.now()
-                };
-                
-                localStorage.setItem('streamweb_progress', JSON.stringify(progressData));
+                const { data: { session } } = await supabaseClient.auth.getSession();
+
+                if (session) {
+                    await supabaseClient.from('user_progress').upsert({
+                        user_id: session.user.id,
+                        movie_id: movieId,
+                        title: movieData[movieId].title,
+                        image_url: movieData[movieId].image,
+                        progress_percent: progress,
+                        playback_time: moviePlayer.currentTime,
+                        duration: moviePlayer.duration,
+                        updated_at: new Date().toISOString()
+                    });
+                } else {
+                    const progressData = JSON.parse(localStorage.getItem('streamweb_progress') || '{}');
+                    progressData[movieId] = {
+                        id: movieId,
+                        title: movieData[movieId].title,
+                        image: movieData[movieId].image,
+                        progress: progress,
+                        currentTime: moviePlayer.currentTime,
+                        duration: moviePlayer.duration,
+                        durationText: movieData[movieId].duration,
+                        timestamp: Date.now()
+                    };
+                    localStorage.setItem('streamweb_progress', JSON.stringify(progressData));
+                }
             }
 
             if (movieData[movieId]) {
                 const movie = movieData[movieId];
                 moviePlayer.src = movie.video;
                 
-                // Auto-resume logic
-                const progressData = JSON.parse(localStorage.getItem('streamweb_progress') || '{}');
-                if (progressData[movieId]) {
-                    moviePlayer.currentTime = progressData[movieId].currentTime;
+                async function initPlayer() {
+                    const { data: { session } } = await supabase.auth.getSession();
+                    let savedProgress = null;
+
+                    if (session) {
+                        const { data } = await supabaseClient
+                            .from('user_progress')
+                            .select('playback_time')
+                            .eq('user_id', session.user.id)
+                            .eq('movie_id', movieId)
+                            .single();
+                        if (data) savedProgress = { currentTime: data.playback_time };
+                    }
+
+                    if (!savedProgress) {
+                        const progressData = JSON.parse(localStorage.getItem('streamweb_progress') || '{}');
+                        if (progressData[movieId]) savedProgress = progressData[movieId];
+                    }
+
+                    if (savedProgress) {
+                        moviePlayer.currentTime = savedProgress.currentTime;
+                    }
                 }
 
+                initPlayer();
+
                 moviePlayer.addEventListener('timeupdate', () => {
-                    // Save every 5 seconds
                     if (Math.floor(moviePlayer.currentTime) % 5 === 0) {
                         saveProgress();
                     }

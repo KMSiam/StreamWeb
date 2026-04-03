@@ -7,6 +7,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Supabase SDK & Config -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="auth.js"></script>
     <link rel="stylesheet" href="styles.css">
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -111,7 +115,12 @@
                         
                         <div class="form-group">
                             <label for="password">🔒 Password</label>
-                            <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+                            <div class="password-input-wrapper">
+                                <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+                                <button type="button" class="password-toggle" aria-label="Toggle Password">
+                                    <i data-lucide="eye"></i>
+                                </button>
+                            </div>
                         </div>
                         
                         <div class="form-group">
@@ -188,22 +197,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Sign Up form
-            const form = document.getElementById('signup-form');
-            if (form) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const container = document.querySelector('.signup-form-container');
-                    container.innerHTML = `
-                        <div class="success-message">
-                            <div class="success-icon">✓</div>
-                            <h2>Welcome to StreamWeb!</h2>
-                            <p>Your account has been created successfully.</p>
-                            <button onclick="window.location.href='index.html'" class="btn-primary">🏠 Go to Home</button>
-                        </div>
-                    `;
-                });
-            }
+            // Sign Up form logic moved to auth.js
 
             // Sidebar toggle
             const menuToggle = document.getElementById('menu-toggle');

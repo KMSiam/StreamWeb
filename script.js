@@ -143,17 +143,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function renderContinueWatching() {
-        const continueGrid = document.getElementById('continue-grid');
-        const continueSection = document.getElementById('continue-section');
-        const seeAllBtn = document.getElementById('see-all-toggle');
-        
-        if (!continueGrid) return;
+    const continueGrid = document.getElementById('continue-grid');
+    const continueSection = document.getElementById('continue-section');
+    const seeAllBtn = document.getElementById('see-all-toggle');
 
-        const progressData = JSON.parse(localStorage.getItem('streamweb_progress') || '{}');
-        const items = Object.values(progressData)
-            .sort((a, b) => b.timestamp - a.timestamp)
-            .slice(0, 10); 
+    async function renderContinueWatching() {
+        const { data: { session } } = await supabaseClient.auth.getSession();
+        let items = [];
+
+        if (session) {
+            // Fetch from Supabase
+            const { data, error } = await supabaseClient
+                .from('user_progress')
+                .select('*')
+                .eq('user_id', session.user.id)
+                .order('updated_at', { ascending: false })
+                .limit(10);
+
+            if (!error && data) {
+                items = data.map(d => ({
+                    id: d.movie_id,
+                    title: d.title,
+                    image: d.image_url,
+                    progress: d.progress_percent,
+                    currentTime: d.playback_time,
+                    duration: d.duration,
+                    timestamp: new Date(d.updated_at).getTime()
+                }));
+            }
+        } else {
+            // Guest mode: Fetch from localStorage
+            const progressData = JSON.parse(localStorage.getItem('streamweb_progress') || '{}');
+            items = Object.values(progressData)
+                .sort((a, b) => b.timestamp - a.timestamp)
+                .slice(0, 10);
+        }
 
         if (items.length === 0) {
             if (continueSection) continueSection.style.display = 'none';
@@ -223,18 +247,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.lucide) lucide.createIcons();
     }
 
-    function removeProgress(movieId) {
-        const progressData = JSON.parse(localStorage.getItem('streamweb_progress') || '{}');
-        if (progressData[movieId]) {
-            delete progressData[movieId];
-            localStorage.setItem('streamweb_progress', JSON.stringify(progressData));
-            renderContinueWatching(); // Refresh the list
+    async function removeProgress(movieId) {
+        const { data: { session } } = await supabaseClient.auth.getSession();
+
+        if (session) {
+            // Delete from Supabase
+            const { error } = await supabaseClient
+                .from('user_progress')
+                .delete()
+                .eq('user_id', session.user.id)
+                .eq('movie_id', movieId);
+            
+            if (!error) renderContinueWatching();
+        } else {
+            // Guest mode: Delete from localStorage
+            const progressData = JSON.parse(localStorage.getItem('streamweb_progress') || '{}');
+            if (progressData[movieId]) {
+                delete progressData[movieId];
+                localStorage.setItem('streamweb_progress', JSON.stringify(progressData));
+                renderContinueWatching();
+            }
         }
     }
 
     // New Toggle Logic
     const seeAllToggle = document.getElementById('see-all-toggle');
-    const continueGrid = document.getElementById('continue-grid');
     if (seeAllToggle && continueGrid) {
         seeAllToggle.addEventListener('click', () => {
             const isGridView = continueGrid.classList.toggle('grid-view');
