@@ -7,7 +7,29 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 5, title: "Dark Secrets", date: "2024", image: "photos/Toofan.jpg", genre: "thriller", category: "new", rating: 8.9, duration: "2h 8m", description: "Psychological thriller", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
         { id: 6, title: "The Haunting", date: "2023", image: "photos/Toofan.jpg", genre: "horror", category: "popular", rating: 7.2, duration: "1h 35m", description: "Spine-chilling horror", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
         { id: 7, title: "Family Bonds", date: "2024", image: "photos/Toofan.jpg", genre: "drama", category: "new", rating: 8.7, duration: "2h 22m", description: "Emotional family drama", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 8, title: "Space Odyssey", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "popular", rating: 9.1, duration: "2h 45m", description: "Epic space adventure", video: "video/TOOFAN%20_%20Official%20Tease.mp4" }
+        { id: 8, title: "Space Odyssey", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "popular", rating: 9.1, duration: "2h 45m", description: "Epic space adventure", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        // Mock items to fill 5 rows
+        { id: 9, title: "Phantom Quest", date: "2024", image: "photos/Toofan.jpg", genre: "fantasy", category: "new", rating: 8.1, duration: "2h 10m", description: "A journey beyond reality", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 10, title: "Cyber Protocol", date: "2024", image: "photos/Toofan.jpg", genre: "sci-fi", category: "new", rating: 8.4, duration: "1h 55m", description: "Digital warfare in 2077", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 11, title: "Crimson Tide", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "popular", rating: 7.9, duration: "2h 5m", description: "Deep sea naval action", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 12, title: "The Last Stand", date: "2023", image: "photos/Toofan.jpg", genre: "drama", category: "popular", rating: 8.3, duration: "2h 30m", description: "A heroic final chapter", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 13, title: "Neon Nights", date: "2024", image: "photos/Toofan.jpg", genre: "sci-fi", category: "new", rating: 8.6, duration: "1h 50m", description: "Cyberpunk detective story", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 14, title: "Island Mystery", date: "2024", image: "photos/Toofan.jpg", genre: "mystery", category: "new", rating: 7.7, duration: "2h 15m", description: "Lost in the tropics", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 15, title: "Speed Demon", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "popular", rating: 8.2, duration: "1h 45m", description: "Underground street racing", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 16, title: "Winter Solstice", date: "2024", image: "photos/Toofan.jpg", genre: "drama", category: "new", rating: 8.0, duration: "2h 20m", description: "A cold winter tale", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 17, title: "Ghost Protocol", date: "2024", image: "photos/Toofan.jpg", genre: "thriller", category: "new", rating: 8.8, duration: "2h 5m", description: "Stealth ops thriller", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 18, title: "Summer Vibes", date: "2023", image: "photos/Toofan.jpg", genre: "comedy", category: "popular", rating: 7.4, duration: "1h 40m", description: "Best summer ever", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 19, title: "Ancient Legacy", date: "2024", image: "photos/Toofan.jpg", genre: "fantasy", category: "new", rating: 8.5, duration: "2h 40m", description: "Return of the gods", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 20, title: "Final Frontier", date: "2024", image: "photos/Toofan.jpg", genre: "sci-fi", category: "popular", rating: 9.0, duration: "2h 55m", description: "Beyond the galaxy", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 21, title: "Rising Star", date: "2024", image: "photos/Toofan.jpg", genre: "drama", category: "new", rating: 8.1, duration: "2h 10m", description: "A dreamer's journey", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 22, title: "Desert Storm", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "new", rating: 7.8, duration: "1h 55m", description: "War in the dunes", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 23, title: "Silicon Dreams", date: "2024", image: "photos/Toofan.jpg", genre: "sci-fi", category: "popular", rating: 8.4, duration: "2h 0m", description: "AI revolution", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 24, title: "Lost Temple", date: "2024", image: "photos/Toofan.jpg", genre: "adventure", category: "new", rating: 7.9, duration: "2h 15m", description: "Searching for gold", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 25, title: "Urban Jungle", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "new", rating: 8.3, duration: "2h 5m", description: "Survival in the city", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        // Pagination test items
+        { id: 26, title: "The Beginning", date: "2024", image: "photos/Toofan.jpg", genre: "drama", category: "new", rating: 8.0, duration: "1h 50m", description: "Where it all started", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 27, title: "Double Cross", date: "2024", image: "photos/Toofan.jpg", genre: "thriller", category: "popular", rating: 8.2, duration: "2h 10m", description: "Betrayal in the ranks", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 28, title: "Happy Endings", date: "2023", image: "photos/Toofan.jpg", genre: "romance", category: "popular", rating: 7.6, duration: "1h 45m", description: "Love always wins", video: "video/TOOFAN%20_%20Official%20Tease.mp4" }
     ];
 
     const trendingMovies = [
@@ -30,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const moviesPerPage = 4;
+    const moviesPerPage = 25;
     let currentPage = 1;
 
     function renderMovies(page) {
