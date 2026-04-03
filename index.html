@@ -36,12 +36,18 @@
             <li><a href="contact.html"><i data-lucide="mail"></i> Contact</a></li>
         </ul>
 
+        <div class="sidebar-auth">
+            <a href="signin.html" class="sidebar-auth-btn signin-btn">Sign In</a>
+            <a href="signup.html" class="sidebar-auth-btn signup-btn">Get Started</a>
+        </div>
+
         <div class="sidebar-footer">
             <div class="social-icons">
                 <a href="https://github.com/KMSiam" target="_blank" class="sidebar-social-link"><i class='bx bxl-github'></i></a>
                 <a href="https://www.linkedin.com/in/km-siam-973723291/" target="_blank" class="sidebar-social-link"><i class='bx bxl-linkedin'></i></a>
                 <a href="https://www.facebook.com/share/1HGp73rfXc/" target="_blank" class="sidebar-social-link"><i class='bx bxl-facebook'></i></a>
                 <a href="https://www.instagram.com/k.m.siam15?igsh=bzZtbXlmZGlpeDF3" target="_blank" class="sidebar-social-link"><i class='bx bxl-instagram'></i></a>
+                <a href="https://t.me/+wEsrmW4qSA5iZjU1" target="_blank" class="sidebar-social-link"><i class='bx bxl-telegram'></i></a>
             </div>
         </div>
     </aside>
@@ -70,10 +76,7 @@
                     <div class="search-results" id="search-results"></div>
                 </div>
 
-                <div class="auth-buttons">
-                    <a href="signin.html" class="auth-btn signin-btn">Sign In</a>
-                    <a href="signup.html" class="auth-btn signup-btn">Get Started</a>
-                </div>
+
             </nav>
         </header>
 
@@ -118,7 +121,19 @@
             </div>
         </section>
 
-
+        <!-- Continue Watching Section -->
+        <section class="continue-watching" id="continue-section" style="display: none;">
+            <div class="continue-header">
+                <h2>Continue Watching</h2>
+                <button class="see-all-btn" id="see-all-toggle">
+                    <span>Show All</span>
+                    <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
+            <div class="continue-grid" id="continue-grid">
+                <!-- Continue watching items will be added here -->
+            </div>
+        </section>
 
 
         <!-- Movies Section -->
@@ -142,18 +157,6 @@
             </div>
         </section>
 
-        <!-- Continue Watching Section -->
-        <section class="continue-watching" id="continue-section" style="display: none;">
-            <h2>Continue Watching</h2>
-            <div class="continue-grid" id="continue-grid">
-                <!-- Continue watching items will be added here -->
-            </div>
-            <div class="see-all-container" id="continue-see-all" style="display: none;">
-                <button class="see-all-btn" id="see-all-toggle">
-                    <span>See All</span>
-                    <i data-lucide="chevron-down"></i>
-                </button>
-            </div>
         </section>
     </main>
 
@@ -164,32 +167,38 @@
                     <img src="photos/website_logo2.png" alt="StreamWeb">
                     <h3>StreamWeb</h3>
                 </div>
-                <p>Your ultimate streaming destination for movies and TV shows.</p>
-            </div>
-            
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h4>Quick Links</h4>
-                    <a href="#movies">Movies</a>
-                    <a href="#trending">Trending</a>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <a href="contact.html">Contact</a>
-                    <a href="feedback.html">Feedback</a>
-                    <a href="#">Help Center</a>
-                </div>
-            </div>
-            
-            <div class="footer-social">
-                <h4>Follow Us</h4>
-                <div class="social-icons">
+                <p>Your ultimate streaming destination for movies and TV shows. Experience cinematic excellence in 4K quality, anywhere, anytime.</p>
+                <div class="social-icons" style="margin-top: 25px;">
                     <a href="https://github.com/KMSiam" target="_blank" class="footer-social-link"><i class='bx bxl-github'></i></a>
                     <a href="https://www.linkedin.com/in/km-siam-973723291/" target="_blank" class="footer-social-link"><i class='bx bxl-linkedin'></i></a>
                     <a href="https://www.facebook.com/share/1HGp73rfXc/" target="_blank" class="footer-social-link"><i class='bx bxl-facebook'></i></a>
                     <a href="https://www.instagram.com/k.m.siam15?igsh=bzZtbXlmZGlpeDF3" target="_blank" class="footer-social-link"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://t.me/+wEsrmW4qSA5iZjU1" target="_blank" class="footer-social-link"><i class='bx bxl-telegram'></i></a>
                 </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <a href="#movies">Latest Movies</a>
+                <a href="#trending">Trending Now</a>
+                <a href="#continue">Continue Watching</a>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Support</h4>
+                <a href="contact.html">Contact Us</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="#">Help Center</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Subscribe to get the latest updates and movie news.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                    <input type="email" placeholder="Email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
             </div>
         </div>
         

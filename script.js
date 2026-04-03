@@ -123,8 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderContinueWatching() {
         const continueGrid = document.getElementById('continue-grid');
-        const seeAllContainer = document.getElementById('continue-see-all');
         const continueSection = document.getElementById('continue-section');
+        const seeAllBtn = document.getElementById('see-all-toggle');
         
         if (!continueGrid) return;
 
@@ -140,17 +140,17 @@ document.addEventListener('DOMContentLoaded', () => {
             continueSection.style.display = 'block';
         }
 
-        if (items.length > 2) {
-            if (seeAllContainer) seeAllContainer.style.display = 'flex';
+        // Show/hide Show All button based on item count
+        if (items.length > 3) {
+            if (seeAllBtn) seeAllBtn.style.display = 'flex';
         } else {
-            if (seeAllContainer) seeAllContainer.style.display = 'none';
+            if (seeAllBtn) seeAllBtn.style.display = 'none';
         }
 
         continueGrid.innerHTML = '';
         items.forEach((item, index) => {
             const continueItem = document.createElement('div');
             continueItem.classList.add('continue-item');
-            if (index >= 2) continueItem.classList.add('hidden-item');
             
             const timeLeftVal = (item.duration || 0) - (item.currentTime || 0);
             const minutesLeft = Math.floor(timeLeftVal / 60);
@@ -176,11 +176,24 @@ document.addEventListener('DOMContentLoaded', () => {
                         Resume
                     </div>
                 </div>
+                <button class="remove-item-btn" title="Remove from list">
+                    <i data-lucide="x"></i>
+                </button>
             `;
             
-            continueItem.addEventListener('click', () => {
-                window.location.href = `movie.html?id=${item.id}`;
+            continueItem.addEventListener('click', (e) => {
+                // Don't trigger redirect if clicking the remove button
+                if (e.target.closest('.remove-item-btn')) return;
+                window.location.href = `movie.html?movie=${item.id}`;
             });
+
+            const removeBtn = continueItem.querySelector('.remove-item-btn');
+            if (removeBtn) {
+                removeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    removeProgress(item.id);
+                });
+            }
             
             continueGrid.appendChild(continueItem);
         });
@@ -188,23 +201,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.lucide) lucide.createIcons();
     }
 
+    function removeProgress(movieId) {
+        const progressData = JSON.parse(localStorage.getItem('streamweb_progress') || '{}');
+        if (progressData[movieId]) {
+            delete progressData[movieId];
+            localStorage.setItem('streamweb_progress', JSON.stringify(progressData));
+            renderContinueWatching(); // Refresh the list
+        }
+    }
+
     // New Toggle Logic
     const seeAllToggle = document.getElementById('see-all-toggle');
     const continueGrid = document.getElementById('continue-grid');
     if (seeAllToggle && continueGrid) {
         seeAllToggle.addEventListener('click', () => {
-            continueGrid.classList.toggle('expanded');
-            const isExpanded = continueGrid.classList.contains('expanded');
+            const isGridView = continueGrid.classList.toggle('grid-view');
             
             const btnText = seeAllToggle.querySelector('span');
-            const iconContainer = seeAllToggle.querySelector('i');
             
-            if (isExpanded) {
+            if (isGridView) {
                 btnText.textContent = 'Show Less';
-                seeAllToggle.innerHTML = `<span>Show Less</span><i data-lucide="chevron-up"></i>`;
+                seeAllToggle.innerHTML = `<span>Show Less</span><i data-lucide="chevron-left"></i>`;
             } else {
-                btnText.textContent = 'See All';
-                seeAllToggle.innerHTML = `<span>See All</span><i data-lucide="chevron-down"></i>`;
+                btnText.textContent = 'Show All';
+                seeAllToggle.innerHTML = `<span>Show All</span><i data-lucide="chevron-right"></i>`;
             }
             
             if (window.lucide) lucide.createIcons();
