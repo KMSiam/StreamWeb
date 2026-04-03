@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const moviesGrid = document.getElementById('movies-grid');
     const prevButton = document.getElementById('prev-button');
     const nextButton = document.getElementById('next-button');
-    const searchButton = document.getElementById('search-button');
     const searchInput = document.getElementById('search-input');
     
     if (!moviesGrid) {
@@ -157,17 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function setupGenreFilters() {
-        const genreCards = document.querySelectorAll('.genre-card');
-        genreCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const genre = card.dataset.genre;
-                const filteredMovies = movies.filter(movie => movie.genre === genre);
-                renderFilteredMovies(filteredMovies);
-                document.getElementById('movies').scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    }
+
 
     function setupMovieFilters() {
         const filterBtns = document.querySelectorAll('.filter-btn');
@@ -247,17 +236,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    if (searchInput && searchButton) {
+    // Search works via input event — no separate button needed
+    if (searchInput) {
         searchInput.addEventListener('input', performSearch);
         searchInput.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
                 performSearch();
-                document.getElementById('movies').scrollIntoView({ behavior: 'smooth' });
+                const moviesSection = document.getElementById('movies');
+                if (moviesSection) moviesSection.scrollIntoView({ behavior: 'smooth' });
             }
-        });
-        searchButton.addEventListener('click', () => {
-            performSearch();
-            document.getElementById('movies').scrollIntoView({ behavior: 'smooth' });
         });
         
         document.addEventListener('click', (event) => {
@@ -268,11 +255,66 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Sidebar & Mobile Menu Logic
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const header = document.querySelector('header');
+    const navLinks = document.querySelectorAll('.sidebar-links a, .bottom-nav a');
+
+    if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            // Prevent scrolling on mobile when sidebar is open
+            if (window.innerWidth <= 950) {
+                document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : 'auto';
+            }
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 950 && 
+                sidebar.classList.contains('active') && 
+                !sidebar.contains(e.target) && 
+                !menuToggle.contains(e.target)) {
+                sidebar.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
+    // Sync active states across Sidebar and Bottom Nav
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const href = link.getAttribute('href');
+            navLinks.forEach(l => {
+                if (l.getAttribute('href') === href) {
+                    l.classList.add('active');
+                } else {
+                    l.classList.remove('active');
+                }
+            });
+            
+            if (window.innerWidth <= 900) {
+                sidebar.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
     // Initialize
     renderMovies(currentPage);
     updateButtons();
     renderTrending();
     renderContinueWatching();
-    setupGenreFilters();
+
     setupMovieFilters();
 });
