@@ -844,18 +844,29 @@ nav {
 }
 
 .continue-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 800px; /* Center or limit width for readability */
 }
 
 .continue-item {
+    display: flex;
     background: var(--bg-card);
     border-radius: var(--radius-md);
     overflow: hidden;
     cursor: pointer;
     transition: var(--transition-base);
-    border: 1px solid transparent;
+    border: 1px solid var(--glass-border);
+    height: 100px;
+}
+
+.continue-item.hidden-item {
+    display: none;
+}
+
+.continue-grid.expanded .continue-item.hidden-item {
+    display: flex;
 }
 
 .continue-item:hover {
@@ -866,8 +877,9 @@ nav {
 
 .continue-thumbnail {
     position: relative;
-    aspect-ratio: 16/9;
-    overflow: hidden;
+    width: 180px; /* Fixed width for horizontal thumbnails */
+    min-width: 180px;
+    height: 100%;
 }
 
 .continue-thumbnail img {
@@ -881,8 +893,8 @@ nav {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 15px;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 8px 12px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
 }
 
 .progress-bar {
@@ -906,16 +918,21 @@ nav {
 }
 
 .resume-btn {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
-    color: #fff;
-    opacity: 0;
-    transition: var(--transition-base);
+    color: var(--accent-mint);
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
-.continue-item:hover .resume-btn { opacity: 1; }
-
-.continue-info { padding: 15px; }
+.continue-info { 
+    padding: 12px 20px; 
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .continue-info h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
 
 .continue-meta {
@@ -926,6 +943,37 @@ nav {
 }
 
 .progress-text { color: var(--accent-mint); font-weight: 600; }
+
+.see-all-container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.see-all-btn {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: var(--text-dim);
+    padding: 10px 24px;
+    border-radius: var(--radius-pill);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.see-all-btn:hover {
+    background: var(--glass-bg-light);
+    border-color: var(--accent-mint);
+    color: var(--accent-mint);
+}
+
+.see-all-btn i {
+    font-size: 16px;
+}
 
 /* ===== Footer ===== */
 footer {
@@ -1594,13 +1642,35 @@ footer {
         --bottom-nav-height: 65px;
     }
 
-    /* Header — compact */
+    /* Header — two row layout on mobile */
     header {
-        padding: 0 12px;
-        height: var(--header-height);
+        padding: 10px 16px;
+        height: auto;
     }
 
-    nav { gap: 10px; }
+    nav { 
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px; 
+    }
+
+    .header-left {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* Toggle stays on left */
+    }
+
+    .mobile-only {
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .auth-buttons {
+        display: none; /* Accessible via sidebar on mobile */
+    }
 
     /* Mobile menu button — proper touch target */
     .mobile-menu-toggle {
@@ -1614,16 +1684,25 @@ footer {
     .mobile-only .logo a { font-size: 1.3rem; gap: 8px; }
     .mobile-only .logo img { height: 28px; width: 28px; }
 
-    /* Search — compact but still visible */
-    .search-container { flex: 1; min-width: 0; }
-    .search-input-wrapper {
-        height: 38px;
-        padding: 0 12px;
-        border-radius: 20px;
+    /* Search — Wide and Prominent on Mobile Row 2 */
+    .search-container { 
+        width: 100%; 
+        order: 2; /* Push to second row */
+        margin: 0;
     }
-    .search-icon { width: 16px; height: 16px; margin-right: 8px; }
-    .search-container input { font-size: 13px; }
-    .search-container input::placeholder { font-size: 12px; }
+
+    .search-input-wrapper {
+        height: 46px; /* Larger pill on mobile */
+        padding: 0 16px;
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+    }
+
+    .search-icon { width: 18px; height: 18px; margin-right: 10px; }
+    .search-container input { font-size: 14px; }
+    .search-container input::placeholder { font-size: 14px; }
 
     /* Search results — full width on mobile */
     .search-results {

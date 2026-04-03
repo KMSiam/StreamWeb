@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles.css">
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Watch Movie | StreamWeb</title>
 </head>
 <body>
@@ -28,17 +30,17 @@
             <li><a href="index.html"><i data-lucide="home"></i> Home</a></li>
             <li><a href="index.html#movies"><i data-lucide="clapperboard"></i> Movies</a></li>
             <li><a href="index.html#trending"><i data-lucide="trending-up"></i> Trending</a></li>
-            <li><a href="index.html#tvshows"><i data-lucide="tv"></i> TV Show</a></li>
+
 
             <li><a href="contact.html"><i data-lucide="mail"></i> Contact</a></li>
         </ul>
 
         <div class="sidebar-footer">
             <div class="social-icons">
-                <a href="#"><i data-lucide="twitter"></i></a>
-                <a href="#"><i data-lucide="instagram"></i></a>
-                <a href="#"><i data-lucide="facebook"></i></a>
-                <a href="#"><i data-lucide="send"></i></a>
+                <a href="https://github.com/KMSiam" target="_blank" class="sidebar-social-link"><i class='bx bxl-github'></i></a>
+                <a href="https://www.linkedin.com/in/km-siam-973723291/" target="_blank" class="sidebar-social-link"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://www.facebook.com/share/1HGp73rfXc/" target="_blank" class="sidebar-social-link"><i class='bx bxl-facebook'></i></a>
+                <a href="https://www.instagram.com/k.m.siam15?igsh=bzZtbXlmZGlpeDF3" target="_blank" class="sidebar-social-link"><i class='bx bxl-instagram'></i></a>
             </div>
         </div>
     </aside>
@@ -136,10 +138,10 @@
                 <div class="footer-social">
                     <h4>Follow Us</h4>
                     <div class="social-icons">
-                        <a href="#">📘</a>
-                        <a href="#">🐦</a>
-                        <a href="#">📷</a>
-                        <a href="#">📺</a>
+                        <a href="https://github.com/KMSiam" target="_blank" class="footer-social-link"><i class='bx bxl-github'></i></a>
+                        <a href="https://www.linkedin.com/in/km-siam-973723291/" target="_blank" class="footer-social-link"><i class='bx bxl-linkedin'></i></a>
+                        <a href="https://www.facebook.com/share/1HGp73rfXc/" target="_blank" class="footer-social-link"><i class='bx bxl-facebook'></i></a>
+                        <a href="https://www.instagram.com/k.m.siam15?igsh=bzZtbXlmZGlpeDF3" target="_blank" class="footer-social-link"><i class='bx bxl-instagram'></i></a>
                     </div>
                 </div>
             </div>
@@ -170,19 +172,57 @@
             const moviePlayer = document.getElementById('movie-player');
 
             const movieData = {
-                1: { title: "Toofan", rating: 8.5, year: "2024", duration: "2h 15m", genre: "action", description: "An epic action thriller", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' },
-                2: { title: "Midnight Express", rating: 7.8, year: "2024", duration: "1h 58m", genre: "action", description: "High-speed chase thriller", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' },
-                3: { title: "Eternal Love", rating: 8.2, year: "2024", duration: "2h 5m", genre: "romance", description: "A timeless love story", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' },
-                4: { title: "Laugh Out Loud", rating: 7.5, year: "2023", duration: "1h 42m", genre: "comedy", description: "Comedy at its finest", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' },
-                5: { title: "Dark Secrets", rating: 8.9, year: "2024", duration: "2h 8m", genre: "thriller", description: "Psychological thriller", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' },
-                6: { title: "The Haunting", rating: 7.2, year: "2023", duration: "1h 35m", genre: "horror", description: "Spine-chilling horror", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' },
-                7: { title: "Family Bonds", rating: 8.7, year: "2024", duration: "2h 22m", genre: "drama", description: "Emotional family drama", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' },
-                8: { title: "Space Odyssey", rating: 9.1, year: "2024", duration: "2h 45m", genre: "action", description: "Epic space adventure", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' }
+                1: { title: "Toofan", image: "photos/Toofan.jpg", rating: 8.5, year: "2024", duration: "2h 15m", genre: "action", description: "An epic action thriller", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' },
+                2: { title: "Midnight Express", image: "photos/Toofan.jpg", rating: 7.8, year: "2024", duration: "1h 58m", genre: "action", description: "High-speed chase thriller", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' },
+                3: { title: "Eternal Love", image: "photos/Toofan.jpg", rating: 8.2, year: "2024", duration: "2h 5m", genre: "romance", description: "A timeless love story", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' },
+                4: { title: "Laugh Out Loud", image: "photos/Toofan.jpg", rating: 7.5, year: "2023", duration: "1h 42m", genre: "comedy", description: "Comedy at its finest", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' },
+                5: { title: "Dark Secrets", image: "photos/Toofan.jpg", rating: 8.9, year: "2024", duration: "2h 8m", genre: "thriller", description: "Psychological thriller", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' },
+                6: { title: "The Haunting", image: "photos/Toofan.jpg", rating: 7.2, year: "2023", duration: "1h 35m", genre: "horror", description: "Spine-chilling horror", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' },
+                7: { title: "Family Bonds", image: "photos/Toofan.jpg", rating: 8.7, year: "2024", duration: "2h 22m", genre: "drama", description: "Emotional family drama", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' },
+                8: { title: "Space Odyssey", image: "photos/Toofan.jpg", rating: 9.1, year: "2024", duration: "2h 45m", genre: "action", description: "Epic space adventure", video: 'video/TOOFAN%20_%20Official%20Tease.mp4' }
             };
+
+            function saveProgress() {
+                if (!moviePlayer.duration || moviePlayer.duration === 0) return;
+                
+                const progressData = JSON.parse(localStorage.getItem('streamweb_progress') || '{}');
+                const progress = Math.floor((moviePlayer.currentTime / moviePlayer.duration) * 100);
+                
+                // Update or create entry
+                progressData[movieId] = {
+                    id: movieId,
+                    title: movieData[movieId].title,
+                    image: movieData[movieId].image,
+                    progress: progress,
+                    currentTime: moviePlayer.currentTime,
+                    duration: moviePlayer.duration,
+                    durationText: movieData[movieId].duration,
+                    timestamp: Date.now()
+                };
+                
+                localStorage.setItem('streamweb_progress', JSON.stringify(progressData));
+            }
 
             if (movieData[movieId]) {
                 const movie = movieData[movieId];
                 moviePlayer.src = movie.video;
+                
+                // Auto-resume logic
+                const progressData = JSON.parse(localStorage.getItem('streamweb_progress') || '{}');
+                if (progressData[movieId]) {
+                    moviePlayer.currentTime = progressData[movieId].currentTime;
+                }
+
+                moviePlayer.addEventListener('timeupdate', () => {
+                    // Save every 5 seconds
+                    if (Math.floor(moviePlayer.currentTime) % 5 === 0) {
+                        saveProgress();
+                    }
+                });
+
+                window.addEventListener('beforeunload', saveProgress);
+                moviePlayer.addEventListener('pause', saveProgress);
+
                 moviePlayer.load();
                 
                 moviePlayer.addEventListener('error', function() {

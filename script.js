@@ -18,11 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 3, title: "Eternal Love", image: "photos/Toofan.jpg", rank: 5 }
     ];
 
-    const continueWatching = [
-        { id: 1, title: "Toofan", image: "photos/Toofan.jpg", progress: 65, duration: "2h 15m", timeLeft: "48m left" },
-        { id: 2, title: "Midnight Express", image: "photos/Toofan.jpg", progress: 30, duration: "1h 58m", timeLeft: "1h 22m left" },
-        { id: 4, title: "Laugh Out Loud", image: "photos/Toofan.jpg", progress: 85, duration: "1h 42m", timeLeft: "15m left" }
-    ];
+
 
     const moviesGrid = document.getElementById('movies-grid');
     const prevButton = document.getElementById('prev-button');
@@ -127,32 +123,91 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderContinueWatching() {
         const continueGrid = document.getElementById('continue-grid');
+        const seeAllContainer = document.getElementById('continue-see-all');
+        const continueSection = document.getElementById('continue-section');
+        
         if (!continueGrid) return;
 
+        const progressData = JSON.parse(localStorage.getItem('streamweb_progress') || '{}');
+        const items = Object.values(progressData)
+            .sort((a, b) => b.timestamp - a.timestamp)
+            .slice(0, 10); 
+
+        if (items.length === 0) {
+            if (continueSection) continueSection.style.display = 'none';
+            return;
+        } else if (continueSection) {
+            continueSection.style.display = 'block';
+        }
+
+        if (items.length > 2) {
+            if (seeAllContainer) seeAllContainer.style.display = 'flex';
+        } else {
+            if (seeAllContainer) seeAllContainer.style.display = 'none';
+        }
+
         continueGrid.innerHTML = '';
-        continueWatching.forEach(item => {
+        items.forEach((item, index) => {
             const continueItem = document.createElement('div');
             continueItem.classList.add('continue-item');
+            if (index >= 2) continueItem.classList.add('hidden-item');
+            
+            const timeLeftVal = (item.duration || 0) - (item.currentTime || 0);
+            const minutesLeft = Math.floor(timeLeftVal / 60);
+            const timeLeftText = minutesLeft > 60 ? 
+                `${Math.floor(minutesLeft/60)}h ${minutesLeft%60}m left` : 
+                `${minutesLeft}m left`;
+
             continueItem.innerHTML = `
                 <div class="continue-thumbnail">
                     <img src="${item.image}" alt="${item.title}">
                     <div class="progress-overlay">
-                        <div class="progress-bar" style="width: ${item.progress}%"></div>
-                        <div class="resume-btn">▶ Resume</div>
+                        <div class="progress-bar" style="width: ${item.progress || 0}%"></div>
                     </div>
                 </div>
                 <div class="continue-info">
                     <h4>${item.title}</h4>
                     <div class="continue-meta">
-                        <span class="progress-text">${item.progress}% watched</span>
-                        <span class="time-left">${item.timeLeft}</span>
+                        <span class="progress-text">${Math.round(item.progress || 0)}% completed</span>
+                        <span>${item.progress > 98 ? 'Finished' : timeLeftText}</span>
+                    </div>
+                    <div class="resume-btn" style="margin-top: 8px;">
+                        <i data-lucide="play" style="width:14px;height:14px;fill:currentColor;"></i>
+                        Resume
                     </div>
                 </div>
             `;
+            
             continueItem.addEventListener('click', () => {
-                window.location.href = `movie.html?movie=${item.id}`;
+                window.location.href = `movie.html?id=${item.id}`;
             });
+            
             continueGrid.appendChild(continueItem);
+        });
+
+        if (window.lucide) lucide.createIcons();
+    }
+
+    // New Toggle Logic
+    const seeAllToggle = document.getElementById('see-all-toggle');
+    const continueGrid = document.getElementById('continue-grid');
+    if (seeAllToggle && continueGrid) {
+        seeAllToggle.addEventListener('click', () => {
+            continueGrid.classList.toggle('expanded');
+            const isExpanded = continueGrid.classList.contains('expanded');
+            
+            const btnText = seeAllToggle.querySelector('span');
+            const iconContainer = seeAllToggle.querySelector('i');
+            
+            if (isExpanded) {
+                btnText.textContent = 'Show Less';
+                seeAllToggle.innerHTML = `<span>Show Less</span><i data-lucide="chevron-up"></i>`;
+            } else {
+                btnText.textContent = 'See All';
+                seeAllToggle.innerHTML = `<span>See All</span><i data-lucide="chevron-down"></i>`;
+            }
+            
+            if (window.lucide) lucide.createIcons();
         });
     }
 
