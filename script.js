@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const movies = [
+export const movies = [
         { id: 1, title: "Toofan", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "new", rating: 8.5, duration: "2h 15m", description: "An epic action thriller", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
         { id: 2, title: "Midnight Express", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "popular", rating: 7.8, duration: "1h 58m", description: "High-speed chase thriller", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
         { id: 3, title: "Eternal Love", date: "2024", image: "photos/Toofan.jpg", genre: "romance", category: "new", rating: 8.2, duration: "2h 5m", description: "A timeless love story", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
@@ -31,14 +30,52 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 27, title: "Double Cross", date: "2024", image: "photos/Toofan.jpg", genre: "thriller", category: "popular", rating: 8.2, duration: "2h 10m", description: "Betrayal in the ranks", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
         { id: 28, title: "Happy Endings", date: "2023", image: "photos/Toofan.jpg", genre: "romance", category: "popular", rating: 7.6, duration: "1h 45m", description: "Love always wins", video: "video/TOOFAN%20_%20Official%20Tease.mp4" }
     ];
-
-    const trendingMovies = [
+export const trendingMovies = [
         { id: 8, title: "Space Odyssey", image: "photos/Toofan.jpg", rank: 1 },
         { id: 5, title: "Dark Secrets", image: "photos/Toofan.jpg", rank: 2 },
         { id: 7, title: "Family Bonds", image: "photos/Toofan.jpg", rank: 3 },
         { id: 1, title: "Toofan", image: "photos/Toofan.jpg", rank: 4 },
         { id: 3, title: "Eternal Love", image: "photos/Toofan.jpg", rank: 5 }
     ];
+
+export function renderMovies(moviesGrid, moviesList, page, moviesPerPage = 25) {
+    if (!moviesGrid) return;
+    moviesGrid.innerHTML = '';
+    const start = (page - 1) * moviesPerPage;
+    const end = start + moviesPerPage;
+    const paginatedMovies = moviesList.slice(start, end);
+
+    paginatedMovies.forEach(movie => {
+        const movieItem = document.createElement('a');
+        movieItem.href = `movie.html?movie=${movie.id}`;
+        movieItem.classList.add('movie-item');
+        movieItem.innerHTML = `
+            <div class="movie-poster">
+                <img src="${movie.image}" alt="${movie.title}">
+                <div class="quality-badge">HD</div>
+                <div class="movie-overlay">
+                    <div class="play-button">▶</div>
+                    <div class="movie-rating">⭐ ${movie.rating}</div>
+                </div>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">${movie.title}</h3>
+                <div class="movie-meta">
+                    <span class="movie-year">${movie.date}</span>
+                    <span class="movie-duration">${movie.duration}</span>
+                    <span class="genre-tag">${movie.genre.toUpperCase()}</span>
+                </div>
+                <p class="movie-description">${movie.description}</p>
+            </div>
+        `;
+        moviesGrid.appendChild(movieItem);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+
+
 
 
 
@@ -55,38 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const moviesPerPage = 25;
     let currentPage = 1;
 
-    function renderMovies(page) {
-        moviesGrid.innerHTML = '';
-        const start = (page - 1) * moviesPerPage;
-        const end = start + moviesPerPage;
-        const paginatedMovies = movies.slice(start, end);
 
-        paginatedMovies.forEach(movie => {
-            const movieItem = document.createElement('a');
-            movieItem.href = `movie.html?movie=${movie.id}`;
-            movieItem.classList.add('movie-item');
-            movieItem.innerHTML = `
-                <div class="movie-poster">
-                    <img src="${movie.image}" alt="${movie.title}">
-                    <div class="quality-badge">HD</div>
-                    <div class="movie-overlay">
-                        <div class="play-button">▶</div>
-                        <div class="movie-rating">⭐ ${movie.rating}</div>
-                    </div>
-                </div>
-                <div class="movie-info">
-                    <h3 class="movie-title">${movie.title}</h3>
-                    <div class="movie-meta">
-                        <span class="movie-year">${movie.date}</span>
-                        <span class="movie-duration">${movie.duration}</span>
-                        <span class="genre-tag">${movie.genre.toUpperCase()}</span>
-                    </div>
-                    <p class="movie-description">${movie.description}</p>
-                </div>
-            `;
-            moviesGrid.appendChild(movieItem);
-        });
-    }
 
     function updateButtons() {
         if (prevButton) prevButton.disabled = currentPage === 1;
@@ -97,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         prevButton.addEventListener('click', () => {
             if (currentPage > 1) {
                 currentPage--;
-                renderMovies(currentPage);
+                renderMovies(moviesGrid, movies, currentPage, moviesPerPage);
                 updateButtons();
             }
         });
@@ -107,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nextButton.addEventListener('click', () => {
             if (currentPage * moviesPerPage < movies.length) {
                 currentPage++;
-                renderMovies(currentPage);
+                renderMovies(moviesGrid, movies, currentPage, moviesPerPage);
                 updateButtons();
             }
         });
@@ -449,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initialize
-    renderMovies(currentPage);
+    renderMovies(moviesGrid, movies, currentPage, moviesPerPage);
     updateButtons();
     renderTrending();
     renderContinueWatching();

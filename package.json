@@ -1,0 +1,13 @@
+{
+  "name": "streamweb",
+  "version": "1.0.0",
+  "description": "StreamWeb Professional Streaming Platform",
+  "main": "script.js",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.9",
+    "jsdom": "^29.1.1"
+  }
+}
