@@ -1,0 +1,16 @@
+127.0.0.1 - - [01/Jul/2026 12:35:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:09] "GET /supabase-config.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:09] "GET /photos/website_logo2.png HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:09] "GET /script.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:09] "GET /styles.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:09] "GET /auth.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:10] "GET /video/TOOFAN%20_%20Official%20Tease.mp4 HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:11] "GET /photos/Toofan.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:40] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:40] "GET /script.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:40] "GET /supabase-config.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:40] "GET /auth.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:40] "GET /photos/website_logo2.png HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:40] "GET /styles.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:41] "GET /video/TOOFAN%20_%20Official%20Tease.mp4 HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 12:35:41] "GET /photos/Toofan.jpg HTTP/1.1" 200 -

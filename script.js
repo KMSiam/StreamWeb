@@ -55,6 +55,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const moviesPerPage = 25;
     let currentPage = 1;
 
+    function createMovieItem(movie) {
+        const movieItem = document.createElement("a");
+        movieItem.href = `movie.html?movie=${movie.id}`;
+        movieItem.classList.add("movie-item");
+        movieItem.innerHTML = `
+            <div class="movie-poster">
+                <img src="${movie.image}" alt="${movie.title}">
+                <div class="quality-badge">HD</div>
+                <div class="movie-overlay">
+                    <div class="play-button">▶</div>
+                    <div class="movie-rating">⭐ ${movie.rating}</div>
+                </div>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">${movie.title}</h3>
+                <div class="movie-meta">
+                    <span class="movie-year">${movie.date}</span>
+                    <span class="movie-duration">${movie.duration}</span>
+                    <span class="genre-tag">${movie.genre.toUpperCase()}</span>
+                </div>
+                <p class="movie-description">${movie.description}</p>
+            </div>
+        `;
+        return movieItem;
+    }
+
     function renderMovies(page) {
         moviesGrid.innerHTML = '';
         const start = (page - 1) * moviesPerPage;
@@ -63,29 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const fragment = document.createDocumentFragment();
         paginatedMovies.forEach(movie => {
-            const movieItem = document.createElement('a');
-            movieItem.href = `movie.html?movie=${movie.id}`;
-            movieItem.classList.add('movie-item');
-            movieItem.innerHTML = `
-                <div class="movie-poster">
-                    <img src="${movie.image}" alt="${movie.title}">
-                    <div class="quality-badge">HD</div>
-                    <div class="movie-overlay">
-                        <div class="play-button">▶</div>
-                        <div class="movie-rating">⭐ ${movie.rating}</div>
-                    </div>
-                </div>
-                <div class="movie-info">
-                    <h3 class="movie-title">${movie.title}</h3>
-                    <div class="movie-meta">
-                        <span class="movie-year">${movie.date}</span>
-                        <span class="movie-duration">${movie.duration}</span>
-                        <span class="genre-tag">${movie.genre.toUpperCase()}</span>
-                    </div>
-                    <p class="movie-description">${movie.description}</p>
-                </div>
-            `;
-            fragment.appendChild(movieItem);
+            fragment.appendChild(createMovieItem(movie));
         });
         moviesGrid.appendChild(fragment);
     }
@@ -319,32 +323,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderFilteredMovies(movieList) {
-        moviesGrid.innerHTML = '';
+        moviesGrid.innerHTML = "";
+        const fragment = document.createDocumentFragment();
         movieList.forEach(movie => {
-            const movieItem = document.createElement('a');
-            movieItem.href = `movie.html?movie=${movie.id}`;
-            movieItem.classList.add('movie-item');
-            movieItem.innerHTML = `
-                <div class="movie-poster">
-                    <img src="${movie.image}" alt="${movie.title}">
-                    <div class="quality-badge">HD</div>
-                    <div class="movie-overlay">
-                        <div class="play-button">▶</div>
-                        <div class="movie-rating">⭐ ${movie.rating}</div>
-                    </div>
-                </div>
-                <div class="movie-info">
-                    <h3 class="movie-title">${movie.title}</h3>
-                    <div class="movie-meta">
-                        <span class="movie-year">${movie.date}</span>
-                        <span class="movie-duration">${movie.duration}</span>
-                        <span class="genre-tag">${movie.genre.toUpperCase()}</span>
-                    </div>
-                    <p class="movie-description">${movie.description}</p>
-                </div>
-            `;
-            moviesGrid.appendChild(movieItem);
+            fragment.appendChild(createMovieItem(movie));
         });
+        moviesGrid.appendChild(fragment);
     }
 
     function performSearch() {
