@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderMovies(page) {
         moviesGrid.innerHTML = '';
+        const fragment = document.createDocumentFragment();
         const start = (page - 1) * moviesPerPage;
         const end = start + moviesPerPage;
         const paginatedMovies = movies.slice(start, end);
@@ -84,8 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="movie-description">${movie.description}</p>
                 </div>
             `;
-            moviesGrid.appendChild(movieItem);
+            fragment.appendChild(movieItem);
         });
+        moviesGrid.appendChild(fragment);
     }
 
     function updateButtons() {
@@ -118,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!trendingSlider) return;
 
         trendingSlider.innerHTML = '';
+        const fragment = document.createDocumentFragment();
         trendingMovies.forEach(movie => {
             const trendingItem = document.createElement('a');
             trendingItem.href = `movie.html?movie=${movie.id}`;
@@ -135,8 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="trending-badge">🔥 Trending</div>
                 </div>
             `;
-            trendingSlider.appendChild(trendingItem);
+            fragment.appendChild(trendingItem);
         });
+        trendingSlider.appendChild(fragment);
     }
 
     const continueGrid = document.getElementById('continue-grid');
@@ -190,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         continueGrid.innerHTML = '';
+        const fragment = document.createDocumentFragment();
         items.forEach((item, index) => {
             const continueItem = document.createElement('div');
             continueItem.classList.add('continue-item');
@@ -246,9 +251,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     removeProgress(item.id);
                 });
             }
-            
-            continueGrid.appendChild(continueItem);
+            fragment.appendChild(continueItem);
         });
+        continueGrid.appendChild(fragment);
 
         if (window.lucide) lucide.createIcons();
     }
@@ -316,6 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderFilteredMovies(movieList) {
         moviesGrid.innerHTML = '';
+        const fragment = document.createDocumentFragment();
         movieList.forEach(movie => {
             const movieItem = document.createElement('a');
             movieItem.href = `movie.html?movie=${movie.id}`;
@@ -339,8 +345,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="movie-description">${movie.description}</p>
                 </div>
             `;
-            moviesGrid.appendChild(movieItem);
+            fragment.appendChild(movieItem);
         });
+        moviesGrid.appendChild(fragment);
     }
 
     function performSearch() {
