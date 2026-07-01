@@ -4,8 +4,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const signupForm = document.getElementById('signup-form');
     const signinForm = document.getElementById('signin-form');
-    const sidebarAuth = document.querySelector('.sidebar-auth');
-    const sidebarLinks = document.querySelector('.sidebar-links');
 
     if (typeof supabaseClient === 'undefined') {
         console.error('Supabase client not initialized!');
