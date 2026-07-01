@@ -428,11 +428,19 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             const href = link.getAttribute('href');
+
+            // Sync active states by targeting only necessary elements
+            document.querySelectorAll('.sidebar-links a.active, .bottom-nav a.active').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Add active class to all links matching the clicked href (handling relative paths)
             navLinks.forEach(l => {
-                if (l.getAttribute('href') === href) {
+                const targetHref = l.getAttribute('href');
+                if (targetHref === href ||
+                    (href.startsWith('#') && targetHref.endsWith(href)) ||
+                    (targetHref.startsWith('#') && href.endsWith(targetHref))) {
                     l.classList.add('active');
-                } else {
-                    l.classList.remove('active');
                 }
             });
             
