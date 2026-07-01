@@ -75,6 +75,11 @@ button {
     cursor: pointer;
 }
 
+:focus-visible {
+    outline: 2px solid var(--accent-mint);
+    outline-offset: 4px;
+}
+
 /* ===== Scrollbar ===== */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-obsidian); }
@@ -377,6 +382,8 @@ nav {
 
 .search-result-item {
     display: flex;
+    color: inherit;
+    text-decoration: none;
     align-items: center;
     gap: 15px;
     padding: 12px 18px;
@@ -644,6 +651,9 @@ nav {
 .trending-slider::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 2px; }
 
 .trending-item {
+    display: block;
+    color: inherit;
+    text-decoration: none;
     flex-shrink: 0;
     width: 180px;
     cursor: pointer;
@@ -783,6 +793,9 @@ nav {
 
 /* Movie Card */
 .movie-item {
+    display: block;
+    color: inherit;
+    text-decoration: none;
     cursor: pointer;
     transition: var(--transition-base);
     border-radius: var(--radius-md);
@@ -1051,6 +1064,10 @@ nav {
     border: 1px solid var(--glass-border);
     height: 100px;
     position: relative; /* Anchor for removal button */
+}
+
+.continue-item:focus-visible {
+    outline-offset: -2px;
 }
 
 .continue-item.hidden-item {
