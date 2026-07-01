@@ -1,0 +1,20 @@
+{
+  "name": "streamweb",
+  "version": "1.0.0",
+  "description": "StreamWeb - Professional Streaming Platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.9",
+    "jsdom": "^29.1.1",
+    "playwright": "^1.61.1",
+    "serve": "^14.2.6",
+    "vitest": "^4.1.9"
+  }
+}

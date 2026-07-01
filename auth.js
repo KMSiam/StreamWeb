@@ -1,7 +1,7 @@
 // 🔐 StreamWeb Authentication Logic
 // Uses Supabase for secure user management.
 
-document.addEventListener('DOMContentLoaded', () => {
+const initAuth = () => {
     const signupForm = document.getElementById('signup-form');
     const signinForm = document.getElementById('signin-form');
     const sidebarAuth = document.querySelector('.sidebar-auth');
@@ -204,4 +204,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
+};
+
+if (typeof document !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', initAuth);
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { initAuth };
+}
