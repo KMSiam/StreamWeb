@@ -47,15 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('next-button');
     const searchInput = document.getElementById('search-input');
     
-    if (!moviesGrid) {
-        console.error('Movies grid not found');
-        return;
-    }
 
     const moviesPerPage = 25;
     let currentPage = 1;
 
     function renderMovies(page) {
+        if (!moviesGrid) return;
         moviesGrid.innerHTML = '';
         const start = (page - 1) * moviesPerPage;
         const end = start + moviesPerPage;
@@ -97,8 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
         prevButton.addEventListener('click', () => {
             if (currentPage > 1) {
                 currentPage--;
-                renderMovies(currentPage);
-                updateButtons();
+                if (moviesGrid) renderMovies(currentPage);
+                if (moviesGrid) updateButtons();
             }
         });
     }
@@ -107,8 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
         nextButton.addEventListener('click', () => {
             if (currentPage * moviesPerPage < movies.length) {
                 currentPage++;
-                renderMovies(currentPage);
-                updateButtons();
+                if (moviesGrid) renderMovies(currentPage);
+                if (moviesGrid) updateButtons();
             }
         });
     }
@@ -315,6 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderFilteredMovies(movieList) {
+        if (!moviesGrid) return;
         moviesGrid.innerHTML = '';
         movieList.forEach(movie => {
             const movieItem = document.createElement('a');
@@ -449,10 +447,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initialize
-    renderMovies(currentPage);
-    updateButtons();
+    if (moviesGrid) renderMovies(currentPage);
+    if (moviesGrid) updateButtons();
     renderTrending();
     renderContinueWatching();
 
-    setupMovieFilters();
+    if (moviesGrid) setupMovieFilters();
 });

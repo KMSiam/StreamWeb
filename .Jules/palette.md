@@ -1,3 +1,6 @@
 ## 2025-05-14 - Semantic Navigation in Vanilla JS Movie Cards
 **Learning:** In projects like StreamWeb that use vanilla JS to render list items (movies, trending), using `div` elements with click listeners prevents native keyboard focus and standard browser navigation (e.g., right-click to open in new tab). Switching to semantic `<a>` tags provides these features out-of-the-box.
 **Action:** Always prefer `<a>` tags for card-style navigation elements. Ensure the `styles.css` handles these links gracefully with `display: block` and `color: inherit`, and always include `:focus-visible` styles for keyboard users.
+
+## Learning: Conditional Initialization for Multi-page Scripts
+When a single JavaScript file (like `script.js`) is shared across multiple pages, avoid using early returns based on the absence of a single element (e.g., `movies-grid`). Doing so prevents all subsequent independent logic (like sidebar toggles, search, or global header effects) from initializing on pages where that element is missing. Instead, use conditional checks (`if (element)`) around specific initialization calls or within functions that interact with the element. This ensures the script remains resilient and functional across the entire application.
