@@ -320,6 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderFilteredMovies(movieList) {
         moviesGrid.innerHTML = '';
+        const fragment = document.createDocumentFragment();
         movieList.forEach(movie => {
             const movieItem = document.createElement('a');
             movieItem.href = `movie.html?movie=${movie.id}`;
@@ -343,8 +344,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="movie-description">${movie.description}</p>
                 </div>
             `;
-            moviesGrid.appendChild(movieItem);
+            fragment.appendChild(movieItem);
         });
+        moviesGrid.appendChild(fragment);
     }
 
     function performSearch() {
