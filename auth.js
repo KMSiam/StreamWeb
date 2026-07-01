@@ -123,11 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             <i data-lucide="user"></i>
                         </div>
                         <div class="user-info">
-                            <span class="user-name">${username}</span>
+                            <span class="user-name"></span>
                             <button id="logout-btn" class="logout-link">Log Out</button>
                         </div>
                     </div>
                 `;
+                // 🛡️ Securely set username using textContent to prevent XSS
+                container.querySelector('.user-name').textContent = username;
             });
 
             // Re-initialize icons for the new HTML
