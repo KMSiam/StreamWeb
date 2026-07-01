@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Initial UI Setup & Auth State Listener
     supabaseClient.auth.onAuthStateChange((event, session) => {
-        console.log('Auth State Change:', event, session);
         updateAuthUI(session);
     });
 
