@@ -158,10 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Password Show/Hide Toggle Logic
     const passwordToggles = document.querySelectorAll('.password-toggle');
     passwordToggles.forEach(toggle => {
+        const input = toggle.parentElement.querySelector('input');
+        const icon = toggle.querySelector('i');
+
         toggle.addEventListener('click', () => {
-            const input = toggle.parentElement.querySelector('input');
-            const icon = toggle.querySelector('i');
-            
             if (input.type === 'password') {
                 input.type = 'text';
                 icon.setAttribute('data-lucide', 'eye-off');
