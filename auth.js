@@ -123,11 +123,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             <i data-lucide="user"></i>
                         </div>
                         <div class="user-info">
-                            <span class="user-name">${username}</span>
+                            <span class="user-name"></span>
                             <button id="logout-btn" class="logout-link">Log Out</button>
                         </div>
                     </div>
                 `;
+                container.querySelector('.user-name').textContent = username;
             });
 
             // Re-initialize icons for the new HTML
@@ -146,10 +147,23 @@ document.addEventListener('DOMContentLoaded', () => {
             // User is logged out
             authContainers.forEach(container => {
                 if (container.querySelector('.user-profile-summary')) {
-                    container.innerHTML = `
-                        <a href="signin.html" class="sidebar-auth-btn signin-btn">Sign In</a>
-                        <a href="signup.html" class="sidebar-auth-btn signup-btn">Get Started</a>
-                    `;
+                    // Clear existing content safely
+                    while (container.firstChild) {
+                        container.removeChild(container.firstChild);
+                    }
+
+                    const signinBtn = document.createElement('a');
+                    signinBtn.href = 'signin.html';
+                    signinBtn.className = 'sidebar-auth-btn signin-btn';
+                    signinBtn.textContent = 'Sign In';
+
+                    const signupBtn = document.createElement('a');
+                    signupBtn.href = 'signup.html';
+                    signupBtn.className = 'sidebar-auth-btn signup-btn';
+                    signupBtn.textContent = 'Get Started';
+
+                    container.appendChild(signinBtn);
+                    container.appendChild(signupBtn);
                 }
             });
         }
