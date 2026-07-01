@@ -1,32 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
     const movies = [
-        { id: 1, title: "Toofan", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "new", rating: 8.5, duration: "2h 15m", description: "An epic action thriller", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 2, title: "Midnight Express", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "popular", rating: 7.8, duration: "1h 58m", description: "High-speed chase thriller", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 3, title: "Eternal Love", date: "2024", image: "photos/Toofan.jpg", genre: "romance", category: "new", rating: 8.2, duration: "2h 5m", description: "A timeless love story", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 4, title: "Laugh Out Loud", date: "2023", image: "photos/Toofan.jpg", genre: "comedy", category: "popular", rating: 7.5, duration: "1h 42m", description: "Comedy at its finest", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 5, title: "Dark Secrets", date: "2024", image: "photos/Toofan.jpg", genre: "thriller", category: "new", rating: 8.9, duration: "2h 8m", description: "Psychological thriller", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 6, title: "The Haunting", date: "2023", image: "photos/Toofan.jpg", genre: "horror", category: "popular", rating: 7.2, duration: "1h 35m", description: "Spine-chilling horror", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 7, title: "Family Bonds", date: "2024", image: "photos/Toofan.jpg", genre: "drama", category: "new", rating: 8.7, duration: "2h 22m", description: "Emotional family drama", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 8, title: "Space Odyssey", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "popular", rating: 9.1, duration: "2h 45m", description: "Epic space adventure", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        // Mock items to fill 5 rows
-        { id: 9, title: "Phantom Quest", date: "2024", image: "photos/Toofan.jpg", genre: "fantasy", category: "new", rating: 8.1, duration: "2h 10m", description: "A journey beyond reality", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 10, title: "Cyber Protocol", date: "2024", image: "photos/Toofan.jpg", genre: "sci-fi", category: "new", rating: 8.4, duration: "1h 55m", description: "Digital warfare in 2077", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 11, title: "Crimson Tide", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "popular", rating: 7.9, duration: "2h 5m", description: "Deep sea naval action", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 12, title: "The Last Stand", date: "2023", image: "photos/Toofan.jpg", genre: "drama", category: "popular", rating: 8.3, duration: "2h 30m", description: "A heroic final chapter", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 13, title: "Neon Nights", date: "2024", image: "photos/Toofan.jpg", genre: "sci-fi", category: "new", rating: 8.6, duration: "1h 50m", description: "Cyberpunk detective story", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 14, title: "Island Mystery", date: "2024", image: "photos/Toofan.jpg", genre: "mystery", category: "new", rating: 7.7, duration: "2h 15m", description: "Lost in the tropics", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 15, title: "Speed Demon", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "popular", rating: 8.2, duration: "1h 45m", description: "Underground street racing", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 16, title: "Winter Solstice", date: "2024", image: "photos/Toofan.jpg", genre: "drama", category: "new", rating: 8.0, duration: "2h 20m", description: "A cold winter tale", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 17, title: "Ghost Protocol", date: "2024", image: "photos/Toofan.jpg", genre: "thriller", category: "new", rating: 8.8, duration: "2h 5m", description: "Stealth ops thriller", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 18, title: "Summer Vibes", date: "2023", image: "photos/Toofan.jpg", genre: "comedy", category: "popular", rating: 7.4, duration: "1h 40m", description: "Best summer ever", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 19, title: "Ancient Legacy", date: "2024", image: "photos/Toofan.jpg", genre: "fantasy", category: "new", rating: 8.5, duration: "2h 40m", description: "Return of the gods", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 20, title: "Final Frontier", date: "2024", image: "photos/Toofan.jpg", genre: "sci-fi", category: "popular", rating: 9.0, duration: "2h 55m", description: "Beyond the galaxy", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 21, title: "Rising Star", date: "2024", image: "photos/Toofan.jpg", genre: "drama", category: "new", rating: 8.1, duration: "2h 10m", description: "A dreamer's journey", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 22, title: "Desert Storm", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "new", rating: 7.8, duration: "1h 55m", description: "War in the dunes", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 23, title: "Silicon Dreams", date: "2024", image: "photos/Toofan.jpg", genre: "sci-fi", category: "popular", rating: 8.4, duration: "2h 0m", description: "AI revolution", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 24, title: "Lost Temple", date: "2024", image: "photos/Toofan.jpg", genre: "adventure", category: "new", rating: 7.9, duration: "2h 15m", description: "Searching for gold", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        { id: 25, title: "Urban Jungle", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "new", rating: 8.3, duration: "2h 5m", description: "Survival in the city", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
-        // Pagination test items
+        { id: 1, title: "Toofan", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "popular", rating: 8.5, duration: "2h 35m", description: "A high-octane action drama following the rise of a boxing champion.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 2, title: "Cyber City", date: "2023", image: "photos/Toofan.jpg", genre: "sci-fi", category: "new", rating: 7.9, duration: "2h 15m", description: "In a neon-lit future, a hacker uncovers a corporate conspiracy.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 3, title: "Eternal Love", date: "2024", image: "photos/Toofan.jpg", genre: "romance", category: "popular", rating: 9.1, duration: "1h 55m", description: "A timeless tale of love that spans generations.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 4, title: "The Last Hope", date: "2023", image: "photos/Toofan.jpg", genre: "drama", category: "new", rating: 8.2, duration: "2h 10m", description: "Humanity's final stand against an alien threat.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 5, title: "Dark Secrets", date: "2024", image: "photos/Toofan.jpg", genre: "thriller", category: "popular", rating: 8.7, duration: "2h 05m", description: "A detective investigates a series of mysterious disappearances.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 6, title: "Midnight Sun", date: "2023", image: "photos/Toofan.jpg", genre: "action", category: "new", rating: 7.5, duration: "2h 20m", description: "An elite squad is tasked with a dangerous mission in the Arctic.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 7, title: "Family Bonds", date: "2024", image: "photos/Toofan.jpg", genre: "drama", category: "popular", rating: 8.9, duration: "1h 50m", description: "The emotional journey of a family navigating life's challenges.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 8, title: "Space Odyssey", date: "2023", image: "photos/Toofan.jpg", genre: "sci-fi", category: "new", rating: 8.4, duration: "2h 45m", description: "An epic adventure through the vastness of the cosmos.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 9, title: "The Silent Witness", date: "2024", image: "photos/Toofan.jpg", genre: "thriller", category: "popular", rating: 8.1, duration: "2h 00m", description: "A witness to a crime must flee for their life.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 10, title: "Urban Legends", date: "2023", image: "photos/Toofan.jpg", genre: "action", category: "new", rating: 7.8, duration: "2h 25m", description: "Street fighters compete in an underground tournament.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 11, title: "Frozen In Time", date: "2024", image: "photos/Toofan.jpg", genre: "sci-fi", category: "popular", rating: 8.3, duration: "2h 10m", description: "A scientist discovers a way to pause time.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 12, title: "Ghost Protocol", date: "2023", image: "photos/Toofan.jpg", genre: "thriller", category: "new", rating: 7.6, duration: "1h 55m", description: "A spy is disavowed and must clear their name.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 13, title: "Rising Tide", date: "2024", image: "photos/Toofan.jpg", genre: "drama", category: "popular", rating: 8.6, duration: "2h 20m", description: "A coastal town faces a natural disaster.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 14, title: "Lost In Translation", date: "2023", image: "photos/Toofan.jpg", genre: "romance", category: "new", rating: 7.7, duration: "1h 45m", description: "Two strangers find connection in a foreign city.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 15, title: "Steel Rain", date: "2024", image: "photos/Toofan.jpg", genre: "action", category: "popular", rating: 8.4, duration: "2h 30m", description: "A mercenary is hired for one last job.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 16, title: "Island of Hope", date: "2023", image: "photos/Toofan.jpg", genre: "drama", category: "new", rating: 8.0, duration: "2h 15m", description: "Survivors of a shipwreck must work together.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 17, title: "Digital Souls", date: "2024", image: "photos/Toofan.jpg", genre: "sci-fi", category: "popular", rating: 8.8, duration: "2h 05m", description: "AI beings fight for their right to exist.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 18, title: "The Guardian", date: "2023", image: "photos/Toofan.jpg", genre: "action", category: "new", rating: 7.9, duration: "2h 10m", description: "A protector must defend their village from raiders.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 19, title: "Hidden Truth", date: "2024", image: "photos/Toofan.jpg", genre: "thriller", category: "popular", rating: 8.5, duration: "2h 00m", description: "A journalist uncovers a government secret.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 20, title: "Autumn Leaves", date: "2023", image: "photos/Toofan.jpg", genre: "romance", category: "new", rating: 7.4, duration: "1h 50m", description: "A bittersweet story of first love.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 21, title: "Shadow Play", date: "2024", image: "photos/Toofan.jpg", genre: "thriller", category: "popular", rating: 8.2, duration: "2h 05m", description: "A mental game of cat and mouse.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 22, title: "The Architect", date: "2023", image: "photos/Toofan.jpg", genre: "sci-fi", category: "new", rating: 8.1, duration: "2h 15m", description: "Building the world of tomorrow.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 23, title: "Desert Mirage", date: "2024", image: "photos/Toofan.jpg", genre: "drama", category: "popular", rating: 8.4, duration: "2h 20m", description: "Finding water in the wilderness.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 24, title: "Neon Nights", date: "2023", image: "photos/Toofan.jpg", genre: "action", category: "new", rating: 7.6, duration: "2h 00m", description: "Racing through the city streets.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
+        { id: 25, title: "Soul Mates", date: "2024", image: "photos/Toofan.jpg", genre: "romance", category: "popular", rating: 8.9, duration: "1h 55m", description: "Two people meant for each other.", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
         { id: 26, title: "The Beginning", date: "2024", image: "photos/Toofan.jpg", genre: "drama", category: "new", rating: 8.0, duration: "1h 50m", description: "Where it all started", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
         { id: 27, title: "Double Cross", date: "2024", image: "photos/Toofan.jpg", genre: "thriller", category: "popular", rating: 8.2, duration: "2h 10m", description: "Betrayal in the ranks", video: "video/TOOFAN%20_%20Official%20Tease.mp4" },
         { id: 28, title: "Happy Endings", date: "2023", image: "photos/Toofan.jpg", genre: "romance", category: "popular", rating: 7.6, duration: "1h 45m", description: "Love always wins", video: "video/TOOFAN%20_%20Official%20Tease.mp4" }
@@ -40,13 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 3, title: "Eternal Love", image: "photos/Toofan.jpg", rank: 5 }
     ];
 
-
-
     const moviesGrid = document.getElementById('movies-grid');
-    const prevButton = document.getElementById('prev-button');
-    const nextButton = document.getElementById('next-button');
+    const prevButton = document.getElementById('prev-page');
+    const nextButton = document.getElementById('next-page');
     const searchInput = document.getElementById('search-input');
-    
+
     if (!moviesGrid) {
         console.error('Movies grid not found');
         return;
@@ -65,25 +61,65 @@ document.addEventListener('DOMContentLoaded', () => {
             const movieItem = document.createElement('a');
             movieItem.href = `movie.html?movie=${movie.id}`;
             movieItem.classList.add('movie-item');
-            movieItem.innerHTML = `
-                <div class="movie-poster">
-                    <img src="${movie.image}" alt="${movie.title}">
-                    <div class="quality-badge">HD</div>
-                    <div class="movie-overlay">
-                        <div class="play-button">▶</div>
-                        <div class="movie-rating">⭐ ${movie.rating}</div>
-                    </div>
-                </div>
-                <div class="movie-info">
-                    <h3 class="movie-title">${movie.title}</h3>
-                    <div class="movie-meta">
-                        <span class="movie-year">${movie.date}</span>
-                        <span class="movie-duration">${movie.duration}</span>
-                        <span class="genre-tag">${movie.genre.toUpperCase()}</span>
-                    </div>
-                    <p class="movie-description">${movie.description}</p>
-                </div>
-            `;
+
+            // Poster Section
+            const posterDiv = document.createElement('div');
+            posterDiv.classList.add('movie-poster');
+
+            const img = document.createElement('img');
+            img.src = movie.image;
+            img.alt = movie.title;
+
+            const qualityBadge = document.createElement('div');
+            qualityBadge.classList.add('quality-badge');
+            qualityBadge.textContent = 'HD';
+
+            const overlay = document.createElement('div');
+            overlay.classList.add('movie-overlay');
+
+            const playBtn = document.createElement('div');
+            playBtn.classList.add('play-button');
+            playBtn.textContent = '▶';
+
+            const rating = document.createElement('div');
+            rating.classList.add('movie-rating');
+            rating.textContent = `⭐ ${movie.rating}`;
+
+            overlay.append(playBtn, rating);
+            posterDiv.append(img, qualityBadge, overlay);
+
+            // Info Section
+            const infoDiv = document.createElement('div');
+            infoDiv.classList.add('movie-info');
+
+            const title = document.createElement('h3');
+            title.classList.add('movie-title');
+            title.textContent = movie.title;
+
+            const meta = document.createElement('div');
+            meta.classList.add('movie-meta');
+
+            const year = document.createElement('span');
+            year.classList.add('movie-year');
+            year.textContent = movie.date;
+
+            const duration = document.createElement('span');
+            duration.classList.add('movie-duration');
+            duration.textContent = movie.duration;
+
+            const genre = document.createElement('span');
+            genre.classList.add('genre-tag');
+            genre.textContent = movie.genre.toUpperCase();
+
+            meta.append(year, duration, genre);
+
+            const description = document.createElement('p');
+            description.classList.add('movie-description');
+            description.textContent = movie.description;
+
+            infoDiv.append(title, meta, description);
+
+            movieItem.append(posterDiv, infoDiv);
             moviesGrid.appendChild(movieItem);
         });
     }
@@ -99,6 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentPage--;
                 renderMovies(currentPage);
                 updateButtons();
+                const moviesSection = document.getElementById('movies');
+                if (moviesSection) moviesSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
     }
@@ -109,6 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentPage++;
                 renderMovies(currentPage);
                 updateButtons();
+                const moviesSection = document.getElementById('movies');
+                if (moviesSection) moviesSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
     }
@@ -122,19 +162,41 @@ document.addEventListener('DOMContentLoaded', () => {
             const trendingItem = document.createElement('a');
             trendingItem.href = `movie.html?movie=${movie.id}`;
             trendingItem.classList.add('trending-item');
-            trendingItem.innerHTML = `
-                <div class="trending-rank">#${movie.rank}</div>
-                <div class="trending-poster">
-                    <img src="${movie.image}" alt="${movie.title}">
-                    <div class="trending-overlay">
-                        <div class="play-btn-small">▶</div>
-                    </div>
-                </div>
-                <div class="trending-info">
-                    <h4>${movie.title}</h4>
-                    <div class="trending-badge">🔥 Trending</div>
-                </div>
-            `;
+
+            const rank = document.createElement('div');
+            rank.classList.add('trending-rank');
+            rank.textContent = `#${movie.rank}`;
+
+            const poster = document.createElement('div');
+            poster.classList.add('trending-poster');
+
+            const img = document.createElement('img');
+            img.src = movie.image;
+            img.alt = movie.title;
+
+            const overlay = document.createElement('div');
+            overlay.classList.add('trending-overlay');
+
+            const playBtn = document.createElement('div');
+            playBtn.classList.add('play-btn-small');
+            playBtn.textContent = '▶';
+
+            overlay.appendChild(playBtn);
+            poster.append(img, overlay);
+
+            const info = document.createElement('div');
+            info.classList.add('trending-info');
+
+            const title = document.createElement('h4');
+            title.textContent = movie.title;
+
+            const badge = document.createElement('div');
+            badge.classList.add('trending-badge');
+            badge.textContent = '🔥 Trending';
+
+            info.append(title, badge);
+
+            trendingItem.append(rank, poster, info);
             trendingSlider.appendChild(trendingItem);
         });
     }
@@ -202,28 +264,68 @@ document.addEventListener('DOMContentLoaded', () => {
                 `${Math.floor(minutesLeft/60)}h ${minutesLeft%60}m left` : 
                 `${minutesLeft}m left`;
 
-            continueItem.innerHTML = `
-                <div class="continue-thumbnail">
-                    <img src="${item.image}" alt="${item.title}">
-                    <div class="progress-overlay">
-                        <div class="progress-bar" style="width: ${item.progress || 0}%"></div>
-                    </div>
-                </div>
-                <div class="continue-info">
-                    <h4>${item.title}</h4>
-                    <div class="continue-meta">
-                        <span class="progress-text">${Math.round(item.progress || 0)}% completed</span>
-                        <span>${item.progress > 98 ? 'Finished' : timeLeftText}</span>
-                    </div>
-                    <div class="resume-btn" style="margin-top: 8px;">
-                        <i data-lucide="play" style="width:14px;height:14px;fill:currentColor;"></i>
-                        Resume
-                    </div>
-                </div>
-                <button class="remove-item-btn" title="Remove from list" aria-label="Remove from list">
-                    <i data-lucide="x"></i>
-                </button>
-            `;
+            // Thumbnail section
+            const thumbnailDiv = document.createElement('div');
+            thumbnailDiv.classList.add('continue-thumbnail');
+
+            const img = document.createElement('img');
+            img.src = item.image;
+            img.alt = item.title;
+
+            const progressOverlay = document.createElement('div');
+            progressOverlay.classList.add('progress-overlay');
+
+            const progressBar = document.createElement('div');
+            progressBar.classList.add('progress-bar');
+            progressBar.style.width = `${item.progress || 0}%`;
+
+            progressOverlay.appendChild(progressBar);
+            thumbnailDiv.append(img, progressOverlay);
+
+            // Info section
+            const infoDiv = document.createElement('div');
+            infoDiv.classList.add('continue-info');
+
+            const title = document.createElement('h4');
+            title.textContent = item.title;
+
+            const metaDiv = document.createElement('div');
+            metaDiv.classList.add('continue-meta');
+
+            const progressText = document.createElement('span');
+            progressText.classList.add('progress-text');
+            progressText.textContent = `${Math.round(item.progress || 0)}% completed`;
+
+            const timeLeftSpan = document.createElement('span');
+            timeLeftSpan.textContent = item.progress > 98 ? 'Finished' : timeLeftText;
+
+            metaDiv.append(progressText, timeLeftSpan);
+
+            const resumeBtn = document.createElement('div');
+            resumeBtn.classList.add('resume-btn');
+            resumeBtn.style.marginTop = '8px';
+
+            const playIcon = document.createElement('i');
+            playIcon.setAttribute('data-lucide', 'play');
+            playIcon.style.width = '14px';
+            playIcon.style.height = '14px';
+            playIcon.style.fill = 'currentColor';
+
+            resumeBtn.append(playIcon, document.createTextNode(' Resume'));
+
+            infoDiv.append(title, metaDiv, resumeBtn);
+
+            // Remove button
+            const removeBtn = document.createElement('button');
+            removeBtn.classList.add('remove-item-btn');
+            removeBtn.title = 'Remove from list';
+            removeBtn.setAttribute('aria-label', 'Remove from list');
+
+            const xIcon = document.createElement('i');
+            xIcon.setAttribute('data-lucide', 'x');
+            removeBtn.appendChild(xIcon);
+
+            continueItem.append(thumbnailDiv, infoDiv, removeBtn);
             
             const navigateToMovie = (e) => {
                 // Don't trigger redirect if clicking the remove button
@@ -239,13 +341,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            const removeBtn = continueItem.querySelector('.remove-item-btn');
-            if (removeBtn) {
-                removeBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    removeProgress(item.id);
-                });
-            }
+            removeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                removeProgress(item.id);
+            });
             
             continueGrid.appendChild(continueItem);
         });
@@ -278,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // New Toggle Logic
     const seeAllToggle = document.getElementById('see-all-toggle');
-    if (seeAllToggle && continueGrid) {
+    if (seeAllToggle) {
         seeAllToggle.addEventListener('click', () => {
             const isGridView = continueGrid.classList.toggle('grid-view');
             
@@ -295,8 +394,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.lucide) lucide.createIcons();
         });
     }
-
-
 
     function setupMovieFilters() {
         const filterBtns = document.querySelectorAll('.filter-btn');
@@ -320,25 +417,65 @@ document.addEventListener('DOMContentLoaded', () => {
             const movieItem = document.createElement('a');
             movieItem.href = `movie.html?movie=${movie.id}`;
             movieItem.classList.add('movie-item');
-            movieItem.innerHTML = `
-                <div class="movie-poster">
-                    <img src="${movie.image}" alt="${movie.title}">
-                    <div class="quality-badge">HD</div>
-                    <div class="movie-overlay">
-                        <div class="play-button">▶</div>
-                        <div class="movie-rating">⭐ ${movie.rating}</div>
-                    </div>
-                </div>
-                <div class="movie-info">
-                    <h3 class="movie-title">${movie.title}</h3>
-                    <div class="movie-meta">
-                        <span class="movie-year">${movie.date}</span>
-                        <span class="movie-duration">${movie.duration}</span>
-                        <span class="genre-tag">${movie.genre.toUpperCase()}</span>
-                    </div>
-                    <p class="movie-description">${movie.description}</p>
-                </div>
-            `;
+
+            // Poster Section
+            const posterDiv = document.createElement('div');
+            posterDiv.classList.add('movie-poster');
+
+            const img = document.createElement('img');
+            img.src = movie.image;
+            img.alt = movie.title;
+
+            const qualityBadge = document.createElement('div');
+            qualityBadge.classList.add('quality-badge');
+            qualityBadge.textContent = 'HD';
+
+            const overlay = document.createElement('div');
+            overlay.classList.add('movie-overlay');
+
+            const playBtn = document.createElement('div');
+            playBtn.classList.add('play-button');
+            playBtn.textContent = '▶';
+
+            const rating = document.createElement('div');
+            rating.classList.add('movie-rating');
+            rating.textContent = `⭐ ${movie.rating}`;
+
+            overlay.append(playBtn, rating);
+            posterDiv.append(img, qualityBadge, overlay);
+
+            // Info Section
+            const infoDiv = document.createElement('div');
+            infoDiv.classList.add('movie-info');
+
+            const title = document.createElement('h3');
+            title.classList.add('movie-title');
+            title.textContent = movie.title;
+
+            const meta = document.createElement('div');
+            meta.classList.add('movie-meta');
+
+            const year = document.createElement('span');
+            year.classList.add('movie-year');
+            year.textContent = movie.date;
+
+            const duration = document.createElement('span');
+            duration.classList.add('movie-duration');
+            duration.textContent = movie.duration;
+
+            const genre = document.createElement('span');
+            genre.classList.add('genre-tag');
+            genre.textContent = movie.genre.toUpperCase();
+
+            meta.append(year, duration, genre);
+
+            const description = document.createElement('p');
+            description.classList.add('movie-description');
+            description.textContent = movie.description;
+
+            infoDiv.append(title, meta, description);
+
+            movieItem.append(posterDiv, infoDiv);
             moviesGrid.appendChild(movieItem);
         });
     }
@@ -358,18 +495,36 @@ document.addEventListener('DOMContentLoaded', () => {
         );
         
         if (searchResults && filteredMovies.length > 0) {
-            searchResults.innerHTML = filteredMovies.slice(0, 5).map(movie => `
-                <a href="movie.html?movie=${movie.id}" class="search-result-item">
-                    <img src="${movie.image}" alt="${movie.title}">
-                    <div class="result-info">
-                        <h4>${movie.title}</h4>
-                        <span>${movie.genre.toUpperCase()} • ${movie.rating} ⭐</span>
-                    </div>
-                </a>
-            `).join('');
+            searchResults.innerHTML = '';
+            filteredMovies.slice(0, 5).forEach(movie => {
+                const resultItem = document.createElement('a');
+                resultItem.href = `movie.html?movie=${movie.id}`;
+                resultItem.classList.add('search-result-item');
+
+                const img = document.createElement('img');
+                img.src = movie.image;
+                img.alt = movie.title;
+
+                const info = document.createElement('div');
+                info.classList.add('result-info');
+
+                const title = document.createElement('h4');
+                title.textContent = movie.title;
+
+                const meta = document.createElement('span');
+                meta.textContent = `${movie.genre.toUpperCase()} • ${movie.rating} ⭐`;
+
+                info.append(title, meta);
+                resultItem.append(img, info);
+                searchResults.appendChild(resultItem);
+            });
             searchResults.style.display = 'block';
         } else if (searchResults) {
-            searchResults.innerHTML = '<div class="no-results">No movies found</div>';
+            searchResults.innerHTML = '';
+            const noResults = document.createElement('div');
+            noResults.classList.add('no-results');
+            noResults.textContent = 'No movies found';
+            searchResults.appendChild(noResults);
             searchResults.style.display = 'block';
         }
     }

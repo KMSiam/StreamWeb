@@ -117,17 +117,32 @@ document.addEventListener('DOMContentLoaded', () => {
             const username = user.user_metadata.username || user.email.split('@')[0];
 
             authContainers.forEach(container => {
-                container.innerHTML = `
-                    <div class="user-profile-summary">
-                        <div class="user-avatar">
-                            <i data-lucide="user"></i>
-                        </div>
-                        <div class="user-info">
-                            <span class="user-name">${username}</span>
-                            <button id="logout-btn" class="logout-link">Log Out</button>
-                        </div>
-                    </div>
-                `;
+                container.innerHTML = '';
+
+                const profileSummary = document.createElement('div');
+                profileSummary.classList.add('user-profile-summary');
+
+                const avatar = document.createElement('div');
+                avatar.classList.add('user-avatar');
+                const userIcon = document.createElement('i');
+                userIcon.setAttribute('data-lucide', 'user');
+                avatar.appendChild(userIcon);
+
+                const userInfo = document.createElement('div');
+                userInfo.classList.add('user-info');
+
+                const userNameSpan = document.createElement('span');
+                userNameSpan.classList.add('user-name');
+                userNameSpan.textContent = username;
+
+                const logoutBtn = document.createElement('button');
+                logoutBtn.id = 'logout-btn';
+                logoutBtn.classList.add('logout-link');
+                logoutBtn.textContent = 'Log Out';
+
+                userInfo.append(userNameSpan, logoutBtn);
+                profileSummary.append(avatar, userInfo);
+                container.appendChild(profileSummary);
             });
 
             // Re-initialize icons for the new HTML
@@ -146,10 +161,19 @@ document.addEventListener('DOMContentLoaded', () => {
             // User is logged out
             authContainers.forEach(container => {
                 if (container.querySelector('.user-profile-summary')) {
-                    container.innerHTML = `
-                        <a href="signin.html" class="sidebar-auth-btn signin-btn">Sign In</a>
-                        <a href="signup.html" class="sidebar-auth-btn signup-btn">Get Started</a>
-                    `;
+                    container.innerHTML = '';
+
+                    const signInLink = document.createElement('a');
+                    signInLink.href = 'signin.html';
+                    signInLink.classList.add('sidebar-auth-btn', 'signin-btn');
+                    signInLink.textContent = 'Sign In';
+
+                    const signUpLink = document.createElement('a');
+                    signUpLink.href = 'signup.html';
+                    signUpLink.classList.add('sidebar-auth-btn', 'signup-btn');
+                    signUpLink.textContent = 'Get Started';
+
+                    container.append(signInLink, signUpLink);
                 }
             });
         }
