@@ -62,7 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const paginatedMovies = movies.slice(start, end);
 
         paginatedMovies.forEach(movie => {
-            const movieItem = document.createElement('div');
+            const movieItem = document.createElement('a');
+            movieItem.href = `movie.html?movie=${movie.id}`;
             movieItem.classList.add('movie-item');
             movieItem.innerHTML = `
                 <div class="movie-poster">
@@ -83,9 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="movie-description">${movie.description}</p>
                 </div>
             `;
-            movieItem.addEventListener('click', () => {
-                window.location.href = `movie.html?movie=${movie.id}`;
-            });
             moviesGrid.appendChild(movieItem);
         });
     }
@@ -121,7 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         trendingSlider.innerHTML = '';
         trendingMovies.forEach(movie => {
-            const trendingItem = document.createElement('div');
+            const trendingItem = document.createElement('a');
+            trendingItem.href = `movie.html?movie=${movie.id}`;
             trendingItem.classList.add('trending-item');
             trendingItem.innerHTML = `
                 <div class="trending-rank">#${movie.rank}</div>
@@ -136,9 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="trending-badge">🔥 Trending</div>
                 </div>
             `;
-            trendingItem.addEventListener('click', () => {
-                window.location.href = `movie.html?movie=${movie.id}`;
-            });
             trendingSlider.appendChild(trendingItem);
         });
     }
@@ -197,6 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
         items.forEach((item, index) => {
             const continueItem = document.createElement('div');
             continueItem.classList.add('continue-item');
+            continueItem.setAttribute('role', 'link');
+            continueItem.setAttribute('tabindex', '0');
             
             const timeLeftVal = (item.duration || 0) - (item.currentTime || 0);
             const minutesLeft = Math.floor(timeLeftVal / 60);
@@ -222,15 +220,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         Resume
                     </div>
                 </div>
-                <button class="remove-item-btn" title="Remove from list">
+                <button class="remove-item-btn" title="Remove from list" aria-label="Remove from list">
                     <i data-lucide="x"></i>
                 </button>
             `;
             
-            continueItem.addEventListener('click', (e) => {
+            const navigateToMovie = (e) => {
                 // Don't trigger redirect if clicking the remove button
                 if (e.target.closest('.remove-item-btn')) return;
                 window.location.href = `movie.html?movie=${item.id}`;
+            };
+
+            continueItem.addEventListener('click', navigateToMovie);
+            continueItem.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navigateToMovie(e);
+                }
             });
 
             const removeBtn = continueItem.querySelector('.remove-item-btn');
@@ -311,7 +317,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderFilteredMovies(movieList) {
         moviesGrid.innerHTML = '';
         movieList.forEach(movie => {
-            const movieItem = document.createElement('div');
+            const movieItem = document.createElement('a');
+            movieItem.href = `movie.html?movie=${movie.id}`;
             movieItem.classList.add('movie-item');
             movieItem.innerHTML = `
                 <div class="movie-poster">
@@ -332,9 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="movie-description">${movie.description}</p>
                 </div>
             `;
-            movieItem.addEventListener('click', () => {
-                window.location.href = `movie.html?movie=${movie.id}`;
-            });
             moviesGrid.appendChild(movieItem);
         });
     }
@@ -355,13 +359,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (searchResults && filteredMovies.length > 0) {
             searchResults.innerHTML = filteredMovies.slice(0, 5).map(movie => `
-                <div class="search-result-item" onclick="window.location.href='movie.html?movie=${movie.id}'">
+                <a href="movie.html?movie=${movie.id}" class="search-result-item">
                     <img src="${movie.image}" alt="${movie.title}">
                     <div class="result-info">
                         <h4>${movie.title}</h4>
                         <span>${movie.genre.toUpperCase()} • ${movie.rating} ⭐</span>
                     </div>
-                </div>
+                </a>
             `).join('');
             searchResults.style.display = 'block';
         } else if (searchResults) {
