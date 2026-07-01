@@ -1,0 +1,18 @@
+# Environment variables
+config.js
+.env
+.env.local
+.env.*.local
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Build artifacts
+dist/
+build/
+.cache/
+
+# OS metadata
+.DS_Store
+Thumbs.db
