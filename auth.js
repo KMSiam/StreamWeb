@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="user-info">
                             <span class="user-name">${username}</span>
-                            <button id="logout-btn" class="logout-link">Log Out</button>
+                            <button class="logout-btn logout-link">Log Out</button>
                         </div>
                     </div>
                 `;
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.lucide) lucide.createIcons();
 
             // Add logout listener
-            const logoutBtns = document.querySelectorAll('#logout-btn');
+            const logoutBtns = document.querySelectorAll('.logout-btn');
             logoutBtns.forEach(btn => {
                 btn.addEventListener('click', async () => {
                     await supabaseClient.auth.signOut();
