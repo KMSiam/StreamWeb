@@ -1,0 +1,30 @@
+36|🧪 Add error handling tests for Authentication|KMSiam|testing-improvement-auth-error-handling-12004655802934265690
+34|🧪 Add test for renderMovies in script.js|KMSiam|testing-render-movies-improvement-16925933524130902167
+33|🔒 Fix XSS via Unsanitized Username in auth.js|KMSiam|fix/xss-auth-username-18310879721333681365
+32|🔒 Fix hardcoded Supabase API keys|KMSiam|security/hide-supabase-keys-9186703694613267734
+31|🧪 [Add unit tests for updateAuthUI]|KMSiam|🧪-auth-ui-tests-11045061723104182345
+30|🔒 [security fix] Remove hardcoded Supabase API keys|KMSiam|fix/hardcoded-supabase-keys-18196071803698946392
+29|🧹 Remove unused variables in auth initialization|KMSiam|cleanup/unused-auth-vars-10130812430427885252
+28|🧹 Extract movie item template to helper function|KMSiam|fix-movie-item-duplication-8186244647251010489
+27|🧹 [remove leftover console.log in auth.js]|KMSiam|cleanup/remove-auth-console-log-17783671919164137376-2401291137515924087
+26|🔐 Fix XSS vulnerability in user profile display|KMSiam|fix/xss-auth-display-636894201248452838
+25|🧹 remove unused destructuring variable in auth.js|KMSiam|cleanup/unused-auth-data-3935266192628561864
+24|⚡ [optimize password toggle DOM query]|KMSiam|jules-55fba124-optimize-password-toggle-dom-query-7995546096771382053
+23|🧪 [testing improvement] Add comprehensive unit tests for auth.js authentication logic|KMSiam|testing-improvement-auth-js-tests-16397496829574853474
+22|⚡ optimize navigation link active state synchronization|KMSiam|perf/nav-link-sync-optimization-11333358436798133626
+21|⚡ [optimize auth UI DOM queries]|KMSiam|optimize-auth-ui-dom-queries-5915312221982725787
+20|🔒 [Security Fix] Resolve DOM-based XSS in Continue Watching and other sections|KMSiam|fix/dom-xss-vulnerabilities-2450796619002804817
+19|⚡ Optimize DOM rendering in renderFilteredMovies|KMSiam|perf-optimize-render-filtered-movies-2436437943690616498
+18|🧹 Remove unused data variable in auth.js signin and signup|KMSiam|cleanup-unused-data-auth-17415093330709936277
+17|⚡ Optimize DOM rendering with DocumentFragment|KMSiam|optimize-dom-appending-fragment-3171086150970117653
+16|🧹 Refactor movie rendering to remove duplication|KMSiam|cleanup-movie-rendering-12453279262001500050
+15|🧪 [testing improvement] implement unit tests for renderMovies function|KMSiam|testing-improvement-render-movies-17799487143912399448
+14|🧪 [testing improvement] Add error tests for Signup and Signin|KMSiam|fix/signup-error-test-7730887201349409989
+13|🧹 refactor: remove early return in script.js to prevent blocking features|KMSiam|fix/script-early-return-breaking-features-1657523493320796202
+12|⚡ optimize DOM appending with DocumentFragment|KMSiam|performance/optimize-dom-appending-6231074590635886954
+10|🔒 [security fix] Remove hardcoded Supabase API keys|KMSiam|security/fix-hardcoded-supabase-key-1621283385818601516
+9|🧹 Fix duplicate ID selection for logout buttons|KMSiam|fix-duplicate-logout-id-auth-js-v2-16431318651036342440
+8|🔒 [security fix] Fix DOM-based XSS in User Profile UI|KMSiam|fix-dom-xss-auth-8917420763465555860
+7|⚡ Optimize DOM rendering with DocumentFragment|KMSiam|performance/document-fragment-optimization-15194315192612787057
+6|🧹 Remove unused variables in auth.js|KMSiam|cleanup-unused-auth-vars-13806924521519683976
+5|🧹 Remove leftover console.log in auth.js|KMSiam|cleanup/remove-auth-console-log-17783671919164137376
