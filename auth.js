@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Creating Account...';
 
-                const { data, error } = await supabaseClient.auth.signUp({
+                const { error } = await supabaseClient.auth.signUp({
                     email,
                     password,
                     options: {
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Signing In...';
 
-                const { data, error } = await supabaseClient.auth.signInWithPassword({
+                const { error } = await supabaseClient.auth.signInWithPassword({
                     email,
                     password
                 });
