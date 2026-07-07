@@ -144,8 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } else {
             // User is logged out
-            authContainers.forEach(container => {
-                if (container.querySelector('.user-profile-summary')) {
+            // Optimization: Target only containers currently showing the profile to avoid redundant queries in a loop
+            document.querySelectorAll('.sidebar-auth .user-profile-summary').forEach(summary => {
+                const container = summary.closest('.sidebar-auth');
+                if (container) {
                     container.innerHTML = `
                         <a href="signin.html" class="sidebar-auth-btn signin-btn">Sign In</a>
                         <a href="signup.html" class="sidebar-auth-btn signup-btn">Get Started</a>
